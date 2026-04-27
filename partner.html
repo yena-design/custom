@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Partner With Yena | YENA Custom Studio</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --black: #080808;
+      --soft: #fbf8f3;
+      --gold: #b8893d;
+      --gold-dark: #8d672d;
+      --text: #111111;
+      --line: #ded2c2;
+      --white: #ffffff;
+      --shadow: 0 18px 40px rgba(0,0,0,.10);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Arial, Helvetica, sans-serif;
+      --container: 1180px;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: var(--soft);
+      color: var(--text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: min(var(--container), 92%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      border-bottom: 1px solid rgba(0,0,0,.08);
+    }
+
+    .nav {
+      height: 92px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-main {
+      font-family: var(--serif);
+      font-size: 42px;
+      letter-spacing: 3px;
+    }
+
+    .logo-sub {
+      font-size: 12px;
+      letter-spacing: 5px;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .btn {
+      background: var(--black);
+      color: white;
+      padding: 12px 22px;
+      text-transform: uppercase;
+      font-size: 13px;
+      border: 1px solid var(--black);
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: black;
+    }
+
+    .hero {
+      padding: 80px 0;
+      text-align: center;
+      background: linear-gradient(to bottom, #fff, #f3ebdf);
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: 64px;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      margin-top: 20px;
+      font-size: 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section {
+      padding: 60px 0;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .box {
+      background: white;
+      padding: 40px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .box h2 {
+      font-family: var(--serif);
+      font-size: 28px;
+      text-transform: uppercase;
+      margin: 0 0 15px;
+    }
+
+    .box p {
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .benefit {
+      background: white;
+      padding: 25px;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .benefit h3 {
+      margin: 10px 0;
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+
+    .cta {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .footer {
+      background: black;
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+    }
+
+    @media(max-width:900px){
+      .grid-2, .benefits {
+        grid-template-columns: 1fr;
+      }
+      .nav-links { display:none; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="container nav">
+    <div>
+      <div class="logo-main">YENA</div>
+      <div class="logo-sub">CUSTOM STUDIO</div>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="partner.html" class="active">Partner</a>
+      <a href="book.html" class="btn">Book</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Partner With Yena</h1>
+    <p>
+      Increase your store’s sales by offering custom fashion services directly to your customers.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid-2">
+
+    <div class="box">
+      <h2>The Problem</h2>
+      <p>
+        Customers often find items they like but don’t purchase because they don’t fit right.
+      </p>
+    </div>
+
+    <div class="box">
+      <h2>The Solution</h2>
+      <p>
+        Yena provides on-demand alterations and redesigns, turning missed sales into completed purchases.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <h2 style="text-align:center; font-family:var(--serif); text-transform:uppercase;">
+      Why Stores Win
+    </h2>
+
+    <div class="benefits">
+      <div class="benefit">
+        <h3>Increase Sales</h3>
+        <p>Customers are more likely to buy when fit is solved.</p>
+      </div>
+      <div class="benefit">
+        <h3>Zero Risk</h3>
+        <p>No inventory, no staffing required.</p>
+      </div>
+      <div class="benefit">
+        <h3>Better Experience</h3>
+        <p>Turn your store into a fashion destination.</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <a href="book.html" class="btn">Start 2-Week Test</a>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <p>YENA Custom Studio • Custom Fit • Custom Style</p>
+</footer>
+
+</body>
+</html>
