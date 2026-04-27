@@ -1,264 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Partner With Yena | YENA Custom Studio</title>
-
-  <style>
-    * { box-sizing: border-box; }
-
-    :root {
-      --black: #080808;
-      --soft: #fbf8f3;
-      --gold: #b8893d;
-      --gold-dark: #8d672d;
-      --text: #111111;
-      --line: #ded2c2;
-      --white: #ffffff;
-      --shadow: 0 18px 40px rgba(0,0,0,.10);
-      --serif: Georgia, "Times New Roman", serif;
-      --sans: Arial, Helvetica, sans-serif;
-      --container: 1180px;
-    }
-
-    body {
-      margin: 0;
-      font-family: var(--sans);
-      background: var(--soft);
-      color: var(--text);
-    }
-
-    a { text-decoration: none; color: inherit; }
-
-    .container {
-      width: min(var(--container), 92%);
-      margin: 0 auto;
-    }
-
-    .topbar {
-      border-bottom: 1px solid rgba(0,0,0,.08);
-    }
-
-    .nav {
-      height: 92px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo-main {
-      font-family: var(--serif);
-      font-size: 42px;
-      letter-spacing: 3px;
-    }
-
-    .logo-sub {
-      font-size: 12px;
-      letter-spacing: 5px;
-      color: var(--gold);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 30px;
-      text-transform: uppercase;
-      font-size: 13px;
-    }
-
-    .nav-links a.active,
-    .nav-links a:hover {
-      color: var(--gold);
-    }
-
-    .btn {
-      background: var(--black);
-      color: white;
-      padding: 12px 22px;
-      text-transform: uppercase;
-      font-size: 13px;
-      border: 1px solid var(--black);
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: black;
-    }
-
-    .hero {
-      padding: 80px 0;
-      text-align: center;
-      background: linear-gradient(to bottom, #fff, #f3ebdf);
-    }
-
-    .hero h1 {
-      font-family: var(--serif);
-      font-size: 64px;
-      margin: 0;
-      text-transform: uppercase;
-    }
-
-    .hero p {
-      margin-top: 20px;
-      font-size: 20px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .section {
-      padding: 60px 0;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-    }
-
-    .box {
-      background: white;
-      padding: 40px;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-
-    .box h2 {
-      font-family: var(--serif);
-      font-size: 28px;
-      text-transform: uppercase;
-      margin: 0 0 15px;
-    }
-
-    .box p {
-      font-size: 17px;
-      line-height: 1.5;
-    }
-
-    .benefits {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 25px;
-      margin-top: 30px;
-    }
-
-    .benefit {
-      background: white;
-      padding: 25px;
-      border: 1px solid var(--line);
-      text-align: center;
-    }
-
-    .benefit h3 {
-      margin: 10px 0;
-      font-size: 15px;
-      text-transform: uppercase;
-    }
-
-    .cta {
-      margin-top: 40px;
-      text-align: center;
-    }
-
-    .footer {
-      background: black;
-      color: white;
-      padding: 30px 0;
-      text-align: center;
-    }
-
-    @media(max-width:900px){
-      .grid-2, .benefits {
-        grid-template-columns: 1fr;
-      }
-      .nav-links { display:none; }
-    }
-
-  </style>
+  <link rel="icon" href="images/logo_icon.png">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
 
-<header class="topbar">
-  <div class="container nav">
-    <div>
-      <div class="logo-main">YENA</div>
-      <div class="logo-sub">CUSTOM STUDIO</div>
-    </div>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html">
+      <img src="images/logo_primary.png" alt="YENA Custom Studio">
+    </a>
 
-    <div class="nav-links">
+    <details class="mobile-menu">
+      <summary>Menu</summary>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="partner.html">Partner</a>
+        <a href="book.html">Book Now</a>
+      </nav>
+    </details>
+
+    <nav class="desktop-nav">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="how-it-works.html">How It Works</a>
-      <a href="partner.html" class="active">Partner</a>
-      <a href="book.html" class="btn">Book</a>
-    </div>
+      <a class="active" href="partner.html">Partner</a>
+      <a class="nav-button" href="book.html">Book Now</a>
+    </nav>
   </div>
 </header>
 
-<section class="hero">
+<main>
+
+<section class="page-hero">
   <div class="container">
-    <h1>Partner With Yena</h1>
-    <p>
-      Increase your store’s sales by offering custom fashion services directly to your customers.
-    </p>
+    <h1>Partner With <span>Yena</span></h1>
+    <div class="divider"></div>
+    <p>A plug-in custom fashion service for thrift stores.</p>
   </div>
 </section>
 
 <section class="section">
-  <div class="container grid-2">
+  <div class="container hero-grid">
 
-    <div class="box">
-      <h2>The Problem</h2>
-      <p>
-        Customers often find items they like but don’t purchase because they don’t fit right.
-      </p>
+    <div class="card">
+      <h3>The Problem</h3>
+      <p>Customers find items they like, but walk away when the fit is wrong.</p>
     </div>
 
-    <div class="box">
-      <h2>The Solution</h2>
-      <p>
-        Yena provides on-demand alterations and redesigns, turning missed sales into completed purchases.
-      </p>
+    <div class="card">
+      <h3>The Solution</h3>
+      <p>Yena helps customers customize items after purchase, creating a better shopping experience and increasing sales.</p>
     </div>
 
   </div>
 </section>
 
-<section class="section">
+<section class="section" style="background:#eee3d5;">
   <div class="container">
+    <div class="section-title">
+      <h2>Why Stores Win</h2>
+    </div>
 
-    <h2 style="text-align:center; font-family:var(--serif); text-transform:uppercase;">
-      Why Stores Win
-    </h2>
-
-    <div class="benefits">
-      <div class="benefit">
-        <h3>Increase Sales</h3>
+    <div class="card-grid">
+      <div class="benefit-card">
+        <h3>Increased Sales</h3>
         <p>Customers are more likely to buy when fit is solved.</p>
       </div>
-      <div class="benefit">
-        <h3>Zero Risk</h3>
-        <p>No inventory, no staffing required.</p>
+
+      <div class="benefit-card">
+        <h3>No Inventory</h3>
+        <p>No new products, no added buying risk.</p>
       </div>
-      <div class="benefit">
-        <h3>Better Experience</h3>
-        <p>Turn your store into a fashion destination.</p>
+
+      <div class="benefit-card">
+        <h3>Low-Risk Pilot</h3>
+        <p>Start with a simple QR code at the register.</p>
       </div>
     </div>
-
-    <div class="cta">
-      <a href="book.html" class="btn">Start 2-Week Test</a>
-    </div>
-
   </div>
 </section>
 
-<footer class="footer">
-  <p>YENA Custom Studio • Custom Fit • Custom Style</p>
+<section class="section" style="text-align:center;">
+  <div class="container">
+    <h2 style="font-family:var(--serif);text-transform:uppercase;">Let’s Test This In Your Store</h2>
+    <p>No complicated setup. No added inventory. Just a better reason for customers to buy.</p>
+    <a class="btn" href="book.html">Request 2-Week Pilot</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-logo">
+      <img src="images/logo_primary.png" alt="YENA Custom Studio">
+    </div>
+    <div class="footer-tagline">Custom Fit • Custom Style • Custom You</div>
+    <div class="footer-contact">
+      <a href="#">Instagram</a>
+      <a href="mailto:hello@yena.studio">Email</a>
+    </div>
+  </div>
 </footer>
 
 </body>
