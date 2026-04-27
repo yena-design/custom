@@ -1,588 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How It Works | YENA Custom Studio</title>
-
-  <style>
-    * { box-sizing: border-box; }
-
-    :root {
-      --black: #080808;
-      --cream: #f7f2ea;
-      --soft: #fbf8f3;
-      --gold: #b8893d;
-      --gold-dark: #8d672d;
-      --text: #111111;
-      --muted: #5f5a52;
-      --line: #ded2c2;
-      --white: #ffffff;
-      --shadow: 0 18px 40px rgba(0,0,0,.10);
-      --serif: Georgia, "Times New Roman", serif;
-      --sans: Arial, Helvetica, sans-serif;
-      --container: 1180px;
-    }
-
-    body {
-      margin: 0;
-      font-family: var(--sans);
-      background: var(--soft);
-      color: var(--text);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(var(--container), 92%);
-      margin: 0 auto;
-    }
-
-    .topbar {
-      background: var(--soft);
-      border-bottom: 1px solid rgba(0,0,0,.08);
-    }
-
-    .nav {
-      height: 92px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-    }
-
-    .logo-main {
-      font-family: var(--serif);
-      font-size: 42px;
-      letter-spacing: 3px;
-      font-weight: 700;
-    }
-
-    .logo-sub {
-      color: var(--gold);
-      font-size: 12px;
-      letter-spacing: 5px;
-      margin-top: 4px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 34px;
-      font-size: 13px;
-      letter-spacing: .7px;
-      text-transform: uppercase;
-    }
-
-    .nav-links a:hover,
-    .nav-links .active {
-      color: var(--gold);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 24px;
-      background: var(--black);
-      color: var(--white);
-      border: 1px solid var(--black);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: .8px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: .2s ease;
-    }
-
-    .btn:hover {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: var(--black);
-    }
-
-    .page-hero {
-      padding: 72px 0 52px;
-      background:
-        linear-gradient(90deg, rgba(251,248,243,.96), rgba(251,248,243,.78)),
-        url("images/how-it-works-hero.jpg");
-      background-size: cover;
-      background-position: center;
-      text-align: center;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .page-hero h1 {
-      margin: 0;
-      font-family: var(--serif);
-      font-size: clamp(44px, 6vw, 74px);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .divider {
-      width: 230px;
-      height: 1px;
-      background: var(--gold);
-      margin: 20px auto;
-      position: relative;
-    }
-
-    .divider::after {
-      content: "♡";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -52%);
-      background: var(--soft);
-      color: var(--gold);
-      padding: 0 16px;
-      font-size: 26px;
-    }
-
-    .page-hero p {
-      margin: 0 auto;
-      max-width: 660px;
-      font-size: 22px;
-      line-height: 1.45;
-    }
-
-    .steps-section {
-      padding: 54px 0 42px;
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 22px;
-      position: relative;
-    }
-
-    .step-card {
-      position: relative;
-      background: rgba(255,255,255,.72);
-      border: 1px solid var(--line);
-      padding: 42px 18px 30px;
-      text-align: center;
-      min-height: 275px;
-      box-shadow: 0 12px 26px rgba(0,0,0,.05);
-    }
-
-    .step-number {
-      position: absolute;
-      left: 50%;
-      top: -24px;
-      transform: translateX(-50%);
-      width: 52px;
-      height: 52px;
-      border-radius: 999px;
-      background: var(--gold);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      font-weight: 700;
-      border: 3px solid var(--soft);
-    }
-
-    .step-icon {
-      font-size: 58px;
-      line-height: 1;
-      margin: 6px 0 26px;
-      color: var(--black);
-    }
-
-    .step-card h2 {
-      margin: 0;
-      font-size: 18px;
-      text-transform: uppercase;
-      letter-spacing: .7px;
-    }
-
-    .small-line {
-      width: 54px;
-      height: 1px;
-      background: var(--gold);
-      margin: 13px auto 16px;
-    }
-
-    .step-card p {
-      margin: 0 auto;
-      max-width: 185px;
-      line-height: 1.55;
-      font-size: 15px;
-      color: var(--text);
-    }
-
-    .cta-panel {
-      margin-top: 34px;
-      background: #eee3d5;
-      border: 1px solid var(--line);
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      overflow: hidden;
-    }
-
-    .cta-image {
-      min-height: 275px;
-      background-image: url("images/sewing-closeup.jpg");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .cta-copy {
-      padding: 46px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .cta-copy .heart {
-      color: var(--gold);
-      font-size: 36px;
-      margin-bottom: 12px;
-    }
-
-    .cta-copy h2 {
-      margin: 0;
-      font-family: var(--serif);
-      font-size: 34px;
-      text-transform: uppercase;
-    }
-
-    .cta-copy p {
-      margin: 14px auto 24px;
-      max-width: 520px;
-      font-size: 18px;
-      line-height: 1.5;
-    }
-
-    .value-strip {
-      background: var(--black);
-      color: var(--white);
-      padding: 34px 0;
-    }
-
-    .value-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-    }
-
-    .value-item {
-      display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: 18px;
-      align-items: center;
-      padding: 0 24px;
-      border-right: 1px solid rgba(255,255,255,.28);
-    }
-
-    .value-item:last-child {
-      border-right: none;
-    }
-
-    .value-icon {
-      color: var(--gold);
-      font-size: 42px;
-      line-height: 1;
-    }
-
-    .value-item h3 {
-      margin: 0 0 8px;
-      font-size: 14px;
-      letter-spacing: .8px;
-      text-transform: uppercase;
-    }
-
-    .value-item p {
-      margin: 0;
-      color: #e8e1d7;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .footer {
-      background: var(--black);
-      color: var(--white);
-      padding: 34px 0;
-      border-top: 1px solid rgba(255,255,255,.14);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr 1fr;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .footer-logo .logo-main {
-      font-size: 38px;
-    }
-
-    .footer-logo .logo-sub {
-      color: var(--gold);
-    }
-
-    .footer-tagline {
-      text-align: center;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 5px;
-      font-size: 13px;
-    }
-
-    .footer-contact {
-      display: flex;
-      justify-content: flex-end;
-      gap: 18px;
-      font-size: 24px;
-    }
-
-    @media (max-width: 1080px) {
-      .steps-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .step-card:last-child {
-        grid-column: span 2;
-      }
-    }
-
-    @media (max-width: 920px) {
-      .nav {
-        height: auto;
-        padding: 20px 0;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .cta-panel,
-      .value-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .value-item {
-        border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,.2);
-        padding: 20px 0;
-      }
-
-      .value-item:last-child {
-        border-bottom: none;
-      }
-
-      .footer-tagline,
-      .footer-contact {
-        text-align: left;
-        justify-content: flex-start;
-      }
-    }
-
-    @media (max-width: 620px) {
-      .page-hero {
-        padding: 46px 0 36px;
-      }
-
-      .page-hero p {
-        font-size: 18px;
-      }
-
-      .steps-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .step-card:last-child {
-        grid-column: auto;
-      }
-
-      .cta-copy {
-        padding: 30px 22px;
-      }
-
-      .cta-copy h2 {
-        font-size: 28px;
-      }
-
-      .btn {
-        width: 100%;
-      }
-    }
-  </style>
+  <link rel="icon" href="images/logo_icon.png">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
 
-  <header class="topbar">
-    <div class="container">
-      <nav class="nav">
-        <a href="index.html" class="logo" aria-label="YENA Custom Studio Home">
-          <span class="logo-main">YENA</span>
-          <span class="logo-sub">CUSTOM STUDIO</span>
-        </a>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html">
+      <img src="images/logo_primary.png" alt="YENA Custom Studio">
+    </a>
 
-        <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
-          <a class="active" href="how-it-works.html">How It Works</a>
-          <a href="partner.html">Partner With Yena</a>
-          <a href="about.html">About</a>
-          <a href="book.html" class="btn">Book Now</a>
-        </div>
+    <details class="mobile-menu">
+      <summary>Menu</summary>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="partner.html">Partner</a>
+        <a href="book.html">Book Now</a>
       </nav>
+    </details>
+
+    <nav class="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a class="active" href="how-it-works.html">How It Works</a>
+      <a href="partner.html">Partner</a>
+      <a class="nav-button" href="book.html">Book Now</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>How It Works</h1>
+    <div class="divider"></div>
+    <p>A simple process from thrift find to custom fit.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container card-grid">
+
+    <article class="step-card">
+      <div class="icon">1</div>
+      <h2>Find Your Piece</h2>
+      <p>Shop your favorite thrift store and choose the item you want customized.</p>
+    </article>
+
+    <article class="step-card">
+      <div class="icon">2</div>
+      <h2>Scan or Book</h2>
+      <p>Use the QR code or website to request service.</p>
+    </article>
+
+    <article class="step-card">
+      <div class="icon">3</div>
+      <h2>Consult With Yena</h2>
+      <p>Share your fit goals, measurements, or redesign idea.</p>
+    </article>
+
+    <article class="step-card">
+      <div class="icon">4</div>
+      <h2>Customize</h2>
+      <p>Yena alters, repairs, reshapes, or redesigns your piece.</p>
+    </article>
+
+    <article class="step-card">
+      <div class="icon">5</div>
+      <h2>Pick Up & Wear</h2>
+      <p>Your thrift find becomes a custom piece you love.</p>
+    </article>
+
+  </div>
+</section>
+
+<section class="section" style="background:#eee3d5;text-align:center;">
+  <div class="container">
+    <h2 style="font-family:var(--serif);text-transform:uppercase;">Ready To Make It Yours?</h2>
+    <p>Let’s turn your thrift find into a piece you love to wear.</p>
+    <a class="btn" href="book.html">Book Now</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-logo">
+      <img src="images/logo_primary.png" alt="YENA Custom Studio">
     </div>
-  </header>
-
-  <main>
-
-    <section class="page-hero">
-      <div class="container">
-        <h1>How It Works</h1>
-        <div class="divider"></div>
-        <p>A simple process from thrift find to custom fit.</p>
-      </div>
-    </section>
-
-    <section class="steps-section">
-      <div class="container">
-
-        <div class="steps-grid">
-
-          <article class="step-card">
-            <div class="step-number">1</div>
-            <div class="step-icon">🛒</div>
-            <h2>Find Your Piece</h2>
-            <div class="small-line"></div>
-            <p>Shop your favorite thrift store and choose the item you want customized.</p>
-          </article>
-
-          <article class="step-card">
-            <div class="step-number">2</div>
-            <div class="step-icon">▣</div>
-            <h2>Scan or Book</h2>
-            <div class="small-line"></div>
-            <p>Use the QR code or website to request a custom alteration or redesign.</p>
-          </article>
-
-          <article class="step-card">
-            <div class="step-number">3</div>
-            <div class="step-icon">☏</div>
-            <h2>Consult With Yena</h2>
-            <div class="small-line"></div>
-            <p>Share your fit goals, style vision, measurements, or redesign idea.</p>
-          </article>
-
-          <article class="step-card">
-            <div class="step-number">4</div>
-            <div class="step-icon">⌘</div>
-            <h2>Customize</h2>
-            <div class="small-line"></div>
-            <p>Yena alters, repairs, reshapes, or redesigns the piece to fit your style.</p>
-          </article>
-
-          <article class="step-card">
-            <div class="step-number">5</div>
-            <div class="step-icon">♡</div>
-            <h2>Pick Up & Wear</h2>
-            <div class="small-line"></div>
-            <p>Your thrift find becomes a custom piece you actually love to wear.</p>
-          </article>
-
-        </div>
-
-        <div class="cta-panel">
-          <div class="cta-image"></div>
-
-          <div class="cta-copy">
-            <div class="heart">♡</div>
-            <h2>Ready To Make It Yours?</h2>
-            <p>Let’s turn your thrift find into a piece you love to wear.</p>
-            <a class="btn" href="book.html">Book Now</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="value-strip">
-      <div class="container">
-        <div class="value-grid">
-
-          <div class="value-item">
-            <div class="value-icon">▣</div>
-            <div>
-              <h3>Custom Fit</h3>
-              <p>Designed for your body.</p>
-            </div>
-          </div>
-
-          <div class="value-item">
-            <div class="value-icon">♙</div>
-            <div>
-              <h3>Custom Style</h3>
-              <p>Made to match your vibe.</p>
-            </div>
-          </div>
-
-          <div class="value-item">
-            <div class="value-icon">♡</div>
-            <div>
-              <h3>Custom You</h3>
-              <p>One-of-a-kind. Always you.</p>
-            </div>
-          </div>
-
-          <div class="value-item">
-            <div class="value-icon">✉</div>
-            <div>
-              <h3>Fast Request</h3>
-              <p>Submit your item and get a quote.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-
-        <div class="footer-logo logo">
-          <span class="logo-main">YENA</span>
-          <span class="logo-sub">CUSTOM STUDIO</span>
-        </div>
-
-        <div class="footer-tagline">
-          Custom Fit • Custom Style • Custom You
-        </div>
-
-        <div class="footer-contact">
-          <a href="#" aria-label="Instagram">◎</a>
-          <a href="mailto:hello@yena.studio" aria-label="Email">✉</a>
-        </div>
-
-      </div>
+    <div class="footer-tagline">Custom Fit • Custom Style • Custom You</div>
+    <div class="footer-contact">
+      <a href="#">Instagram</a>
+      <a href="mailto:hello@yena.studio">Email</a>
     </div>
-  </footer>
+  </div>
+</footer>
 
 </body>
 </html>
