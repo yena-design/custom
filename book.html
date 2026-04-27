@@ -6,6 +6,7 @@
   <title>Book Now | YENA Custom Studio</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
 <header class="site-header">
@@ -29,6 +30,7 @@
     <nav class="desktop-nav">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
+      <a href="shop.html">Shop</a>
       <a href="how-it-works.html">How It Works</a>
       <a href="partner.html">Partner With Yena</a>
       <a class="active nav-btn" href="book.html">Book Now</a>
@@ -36,92 +38,179 @@
   </div>
 </header>
 
-<section class="page-hero">
-  <div class="container">
-    <h1>Book A <span>Custom Alteration</span></h1>
-    <p>Tell Yena about your piece and what you want changed.</p>
+<main>
+
+<section class="book-hero">
+  <div class="book-hero-left">
+    <div class="book-copy">
+      <h1>Book A<br><span>Custom Alteration</span></h1>
+      <div class="gold-line"></div>
+      <p>Tell Yena about your piece and what you want changed.<br>Let’s create something that fits you perfectly.</p>
+    </div>
+  </div>
+
+  <div class="book-hero-right">
+    <div class="book-tools-visual">✂</div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container form-grid">
+<section class="book-main">
+  <div class="container book-grid">
 
-    <div class="card">
+    <div class="book-form-panel">
       <h2>Submit Your Request</h2>
 
       <form>
-        <input type="text" placeholder="Full Name" required>
-        <input type="email" placeholder="Email Address" required>
-        <input type="tel" placeholder="Phone Number">
-        <input type="text" placeholder="Where did you buy the item?">
+        <div class="form-two">
+          <div class="field-with-icon">
+            <span>♙</span>
+            <input type="text" placeholder="Full Name*" required>
+          </div>
 
-        <select>
-          <option>Type of Garment</option>
-          <option>Shirt</option>
-          <option>Dress</option>
-          <option>Pants</option>
-          <option>Jacket</option>
-          <option>Skirt</option>
-          <option>Other</option>
-        </select>
+          <div class="field-with-icon">
+            <span>✉</span>
+            <input type="email" placeholder="Email Address*" required>
+          </div>
 
-        <textarea placeholder="What do you want changed?"></textarea>
+          <div class="field-with-icon">
+            <span>☎</span>
+            <input type="tel" placeholder="Phone Number*">
+          </div>
 
-        <input type="file">
+          <div class="field-with-icon">
+            <span>▣</span>
+            <input type="text" placeholder="Where did you buy the item?*">
+          </div>
 
-        <select>
-          <option>Preferred Turnaround Time</option>
-          <option>Standard: 3–7 days</option>
-          <option>Rush: 24–48 hours</option>
-          <option>Flexible</option>
-        </select>
+          <div class="field-with-icon">
+            <span>♕</span>
+            <select>
+              <option>Type of garment*</option>
+              <option>Shirt</option>
+              <option>Dress</option>
+              <option>Pants</option>
+              <option>Jacket</option>
+              <option>Skirt</option>
+              <option>Other</option>
+            </select>
+          </div>
 
-        <button class="btn" type="submit">Submit Request</button>
+          <div class="field-with-icon message-field">
+            <span>✎</span>
+            <textarea placeholder="What do you want changed?*"></textarea>
+          </div>
+        </div>
+
+        <label class="upload-box">
+          <span class="upload-icon">☁</span>
+          <strong>Click to upload or drag and drop</strong>
+          <small>JPG, PNG up to 10MB</small>
+          <input type="file">
+        </label>
+
+        <div class="field-with-icon full-field">
+          <span>◷</span>
+          <select>
+            <option>Preferred turnaround time</option>
+            <option>Standard: 3–7 days</option>
+            <option>Rush: 24–48 hours</option>
+            <option>Flexible</option>
+          </select>
+        </div>
+
+        <button class="book-submit" type="submit">Submit Request</button>
+
+        <p class="form-note">♡ Every piece is unique. Final pricing will be confirmed after review.</p>
       </form>
     </div>
 
-    <aside>
-      <div class="card">
+    <aside class="book-sidebar">
+      <div class="contact-card">
         <h2>Prefer To Text Or Email?</h2>
-        <p>Phone: (555) 123-4567</p>
-        <p>Email: hello@yena.studio</p>
-        <p>Instagram: @yena.custom.studio</p>
+        <div class="services-divider small"><span>♡</span></div>
+
+        <div class="contact-line">
+          <span>☎</span>
+          <p>(555) 123-4567</p>
+        </div>
+
+        <div class="contact-line">
+          <span>✉</span>
+          <p>hello@yena.studio</p>
+        </div>
+
+        <div class="contact-line">
+          <span>◎</span>
+          <p>@yena.custom.studio</p>
+        </div>
+
+        <hr>
+
+        <p class="reply-note">We typically reply within 24 hours.</p>
       </div>
 
-      <div class="card" style="margin-top:22px;">
-        <h2>Pricing Note</h2>
-        <p>Every piece is unique. Final pricing will be confirmed after review.</p>
+      <div class="tag-preview">
+        Made for you.<br>
+        ♡<br>
+        Made by Yena.<br>
+        Made to last.
       </div>
     </aside>
 
   </div>
 </section>
 
-<section class="value-strip">
-  <div class="container value-grid">
-    <div class="value-item">
-      <h3>Custom Fit</h3>
-      <p>Made to fit your body.</p>
+<section class="book-value-strip">
+  <div class="container book-value-grid">
+
+    <div class="book-value-item">
+      <div class="book-value-icon">▣</div>
+      <div>
+        <h3>Custom Fit</h3>
+        <p>Made to fit your body.</p>
+      </div>
     </div>
-    <div class="value-item">
-      <h3>Custom Style</h3>
-      <p>Designed to match your vibe.</p>
+
+    <div class="book-value-item">
+      <div class="book-value-icon">♙</div>
+      <div>
+        <h3>Custom Style</h3>
+        <p>Designed to match your vibe.</p>
+      </div>
     </div>
-    <div class="value-item">
-      <h3>Custom You</h3>
-      <p>One-of-a-kind. Always you.</p>
+
+    <div class="book-value-item">
+      <div class="book-value-icon">♡</div>
+      <div>
+        <h3>Custom You</h3>
+        <p>One-of-a-kind. Always you.</p>
+      </div>
     </div>
-    <div class="value-item">
-      <h3>Sustainable Fashion</h3>
-      <p>We upcycle and restyle to give clothes a second life.</p>
+
+    <div class="book-value-item">
+      <div class="book-value-icon">⌁</div>
+      <div>
+        <h3>Sustainable Fashion</h3>
+        <p>We upcycle and restyle to give clothes a second life.</p>
+      </div>
     </div>
+
   </div>
 </section>
 
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <img src="images/logo_primary.png" alt="YENA Custom Studio">
-    <div class="footer-tagline">Custom Fit • Custom Style • Custom You</div>
+</main>
+
+<footer class="site-footer book-footer">
+  <div class="container book-footer-grid">
+    <div>
+      <img src="images/logo_primary.png" alt="YENA Custom Studio">
+    </div>
+
+    <div>
+      <div class="footer-tagline">Custom Fit • Custom Style • Custom You</div>
+      <p>© 2024 YENA Custom Studio. All rights reserved.</p>
+    </div>
+
     <div class="footer-contact">
       <a href="#">Instagram</a>
       <a href="mailto:hello@yena.studio">Email</a>
