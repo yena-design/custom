@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Book | YENA Custom Studio</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --black: #080808;
+      --soft: #fbf8f3;
+      --gold: #b8893d;
+      --gold-dark: #8d672d;
+      --text: #111;
+      --line: #ded2c2;
+      --white: #fff;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Arial, Helvetica, sans-serif;
+      --container: 1100px;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: var(--soft);
+      color: var(--text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: min(var(--container), 92%);
+      margin: 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0;
+    }
+
+    .logo-main {
+      font-family: var(--serif);
+      font-size: 38px;
+      letter-spacing: 3px;
+    }
+
+    .logo-sub {
+      font-size: 11px;
+      letter-spacing: 5px;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .btn {
+      background: var(--black);
+      color: white;
+      padding: 12px 20px;
+      text-transform: uppercase;
+      font-size: 12px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--gold);
+      color: black;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 0 40px;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: 54px;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      margin-top: 15px;
+      font-size: 18px;
+    }
+
+    .form-section {
+      padding: 30px 0 60px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+    }
+
+    .form-box {
+      background: white;
+      padding: 30px;
+      border: 1px solid var(--line);
+    }
+
+    .form-box h2 {
+      font-family: var(--serif);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .form-field {
+      margin-bottom: 18px;
+    }
+
+    .form-field label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    textarea {
+      min-height: 90px;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .side-box {
+      background: white;
+      padding: 25px;
+      border: 1px solid var(--line);
+    }
+
+    .side-box h3 {
+      margin: 0 0 10px;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    .footer {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    @media(max-width:900px){
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links { display:none; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <div>
+      <div class="logo-main">YENA</div>
+      <div class="logo-sub">CUSTOM STUDIO</div>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="partner.html">Partner</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Book a Custom Alteration</h1>
+    <p>Tell Yena what you bought and what you want changed.</p>
+  </div>
+</section>
+
+<section class="form-section">
+  <div class="container form-grid">
+
+    <!-- FORM -->
+    <div class="form-box">
+      <h2>Request Service</h2>
+
+      <form>
+        <div class="form-field">
+          <label>Name</label>
+          <input type="text" required />
+        </div>
+
+        <div class="form-field">
+          <label>Email</label>
+          <input type="email" required />
+        </div>
+
+        <div class="form-field">
+          <label>Phone</label>
+          <input type="text" />
+        </div>
+
+        <div class="form-field">
+          <label>Item Type</label>
+          <select>
+            <option>Shirt</option>
+            <option>Dress</option>
+            <option>Pants</option>
+            <option>Jacket</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label>What do you want changed?</label>
+          <textarea></textarea>
+        </div>
+
+        <div class="form-field">
+          <label>Upload Photo</label>
+          <input type="file" />
+        </div>
+
+        <button class="btn">Submit Request</button>
+      </form>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <div class="side-box">
+        <h3>Contact</h3>
+        <p>Email: hello@yena.studio</p>
+        <p>Instagram: @yenacustom</p>
+      </div>
+
+      <div class="side-box">
+        <h3>Turnaround</h3>
+        <p>Most projects completed in 3–7 days depending on complexity.</p>
+      </div>
+
+      <div class="side-box">
+        <h3>Pricing</h3>
+        <p>Basic: $15+</p>
+        <p>Custom: $75+</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <p>YENA Custom Studio • Custom Fit • Custom Style • Custom You</p>
+</footer>
+
+</body>
+</html>
