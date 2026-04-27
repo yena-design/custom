@@ -6,6 +6,7 @@
   <title>Shop | YENA Custom Studio</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
 <header class="site-header">
@@ -85,56 +86,14 @@
     </div>
 
     <div class="shop-filter-row">
-      <button class="filter active">All</button>
-      <button class="filter">Reworked Pieces</button>
-      <button class="filter">Custom Orders</button>
-      <button class="filter">Accessories</button>
-      <button class="filter">Gift Cards</button>
+      <button class="filter active" onclick="filterProducts('All', this)">All</button>
+      <button class="filter" onclick="filterProducts('Reworked Pieces', this)">Reworked Pieces</button>
+      <button class="filter" onclick="filterProducts('Custom Orders', this)">Custom Orders</button>
+      <button class="filter" onclick="filterProducts('Accessories', this)">Accessories</button>
+      <button class="filter" onclick="filterProducts('Gift Cards', this)">Gift Cards</button>
     </div>
 
-    <div class="product-grid">
-
-      <article class="product-card">
-        <div class="product-image">Product Image</div>
-        <div class="product-info">
-          <h3>Reworked Denim Jacket</h3>
-          <p class="price-shop">$120</p>
-          <p>One-of-a-kind redesign</p>
-          <button class="product-btn" onclick="addToCart('Reworked Denim Jacket', 120)">Add to Cart</button>
-        </div>
-      </article>
-
-      <article class="product-card">
-        <div class="product-image">Product Image</div>
-        <div class="product-info">
-          <h3>Corset Top — Black</h3>
-          <p class="price-shop">$65</p>
-          <p>One-of-a-kind redesign</p>
-          <button class="product-btn" onclick="addToCart('Corset Top — Black', 65)">Add to Cart</button>
-        </div>
-      </article>
-
-      <article class="product-card">
-        <div class="product-image">Product Image</div>
-        <div class="product-info">
-          <h3>Patchwork Denim</h3>
-          <p class="price-shop">$110</p>
-          <p>One-of-a-kind redesign</p>
-          <button class="product-btn" onclick="addToCart('Patchwork Denim', 110)">Add to Cart</button>
-        </div>
-      </article>
-
-      <article class="product-card">
-        <div class="product-image">Product Image</div>
-        <div class="product-info">
-          <h3>Cropped Blazer</h3>
-          <p class="price-shop">$95</p>
-          <p>One-of-a-kind redesign</p>
-          <button class="product-btn" onclick="addToCart('Cropped Blazer', 95)">Add to Cart</button>
-        </div>
-      </article>
-
-    </div>
+    <div id="product-grid" class="product-grid"></div>
 
   </div>
 </section>
@@ -161,7 +120,6 @@
   </div>
 </footer>
 
-<!-- CART DRAWER -->
 <div id="cart-overlay" class="cart-overlay" onclick="closeCart()"></div>
 
 <aside id="cart-drawer" class="cart-drawer">
@@ -188,22 +146,84 @@
   </div>
 </aside>
 
+<script src="js/products.js"></script>
+
 <script>
   let cart = JSON.parse(localStorage.getItem("yenaCart")) || [];
+  let activeCategory = "All";
+
+  function renderProducts(products = YENA_PRODUCTS) {
+    const productGrid = document.getElementById("product-grid");
+    productGrid.innerHTML = "";
+
+    const visibleProducts = products.filter(product => {
+      return activeCategory === "All" || product.category === activeCategory;
+    });
+
+    if (visibleProducts.length === 0) {
+      productGrid.innerHTML = "<p>No products found in this category.</p>";
+      return;
+    }
+
+    visibleProducts.forEach(product => {
+      const card = document.createElement("article");
+      card.className = "product-card";
+
+      card.innerHTML = `
+        <div class="product-image">
+          <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='Product Image';">
+        </div>
+
+        <div class="product-info">
+          <div class="product-status">${product.status}</div>
+          <h3>${product.name}</h3>
+          <p class="price-shop">$${product.price}</p>
+          <p>${product.description}</p>
+
+          <button 
+            class="product-btn" 
+            onclick="addToCart('${product.id}')"
+            ${product.status !== "Available" ? "disabled" : ""}
+          >
+            ${product.status === "Available" ? "Add to Cart" : "Sold Out"}
+          </button>
+        </div>
+      `;
+
+      productGrid.appendChild(card);
+    });
+  }
+
+  function filterProducts(category, button) {
+    activeCategory = category;
+
+    document.querySelectorAll(".filter").forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    renderProducts();
+  }
 
   function saveCart() {
     localStorage.setItem("yenaCart", JSON.stringify(cart));
   }
 
-  function addToCart(name, price) {
-    const existingItem = cart.find(item => item.name === name);
+  function addToCart(productId) {
+    const product = YENA_PRODUCTS.find(item => item.id === productId);
+
+    if (!product || product.status !== "Available") return;
+
+    const existingItem = cart.find(item => item.id === productId);
 
     if (existingItem) {
       existingItem.quantity += 1;
     } else {
       cart.push({
-        name: name,
-        price: price,
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
         quantity: 1
       });
     }
@@ -213,21 +233,21 @@
     openCart();
   }
 
-  function removeFromCart(name) {
-    cart = cart.filter(item => item.name !== name);
+  function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
     saveCart();
     renderCart();
   }
 
-  function changeQuantity(name, amount) {
-    const item = cart.find(item => item.name === name);
+  function changeQuantity(productId, amount) {
+    const item = cart.find(item => item.id === productId);
 
     if (!item) return;
 
     item.quantity += amount;
 
     if (item.quantity <= 0) {
-      removeFromCart(name);
+      removeFromCart(productId);
     }
 
     saveCart();
@@ -260,13 +280,13 @@
           <h3>${item.name}</h3>
           <p>$${item.price}</p>
           <div class="qty-controls">
-            <button onclick="changeQuantity('${item.name}', -1)">−</button>
+            <button onclick="changeQuantity('${item.id}', -1)">−</button>
             <span>${item.quantity}</span>
-            <button onclick="changeQuantity('${item.name}', 1)">+</button>
+            <button onclick="changeQuantity('${item.id}', 1)">+</button>
           </div>
         </div>
 
-        <button class="remove-btn" onclick="removeFromCart('${item.name}')">Remove</button>
+        <button class="remove-btn" onclick="removeFromCart('${item.id}')">Remove</button>
       `;
 
       cartItems.appendChild(div);
@@ -292,16 +312,10 @@
       return;
     }
 
-    /*
-      OPTION 1:
-      Replace the URL below with a real Stripe Payment Link.
-      Example:
-      window.location.href = "https://buy.stripe.com/YOUR_PAYMENT_LINK";
-    */
-
-    alert("Checkout is ready to connect to Stripe. Add your Stripe Payment Link inside checkout().");
+    alert("Next step: connect this button to Stripe Checkout or a Stripe Payment Link.");
   }
 
+  renderProducts();
   renderCart();
 </script>
 
