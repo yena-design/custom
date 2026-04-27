@@ -1,772 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>YENA Custom Studio | From Thrift to Tailored</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    :root {
-      --black: #080808;
-      --cream: #f7f2ea;
-      --soft: #fbf8f3;
-      --gold: #b8893d;
-      --gold-dark: #8d672d;
-      --text: #111111;
-      --muted: #5f5a52;
-      --line: #ded2c2;
-      --white: #ffffff;
-      --shadow: 0 18px 40px rgba(0,0,0,.10);
-      --serif: Georgia, "Times New Roman", serif;
-      --sans: Arial, Helvetica, sans-serif;
-      --container: 1180px;
-    }
-
-    body {
-      margin: 0;
-      font-family: var(--sans);
-      background: var(--soft);
-      color: var(--text);
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    img {
-      width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: min(var(--container), 92%);
-      margin: 0 auto;
-    }
-
-    .topbar {
-      background: var(--soft);
-      border-bottom: 1px solid rgba(0,0,0,.08);
-    }
-
-    .nav {
-      height: 92px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-    }
-
-    .logo-main {
-      font-family: var(--serif);
-      font-size: 42px;
-      letter-spacing: 3px;
-      font-weight: 700;
-    }
-
-    .logo-sub {
-      color: var(--gold);
-      font-size: 12px;
-      letter-spacing: 5px;
-      margin-top: 4px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 34px;
-      font-size: 13px;
-      letter-spacing: .7px;
-      text-transform: uppercase;
-    }
-
-    .nav-links a {
-      position: relative;
-    }
-
-    .nav-links a:hover {
-      color: var(--gold);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 24px;
-      background: var(--black);
-      color: var(--white);
-      border: 1px solid var(--black);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: .8px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: .2s ease;
-    }
-
-    .btn:hover {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: var(--black);
-    }
-
-    .btn.secondary {
-      background: transparent;
-      color: var(--gold-dark);
-      border-color: var(--gold);
-    }
-
-    .btn.secondary:hover {
-      background: var(--gold);
-      color: var(--black);
-    }
-
-    .hero {
-      padding: 44px 0 0;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(184,137,61,.12), transparent 28%),
-        linear-gradient(180deg, #fbf8f3 0%, #f3ebdf 100%);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 42% 58%;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .hero-copy {
-      padding: 26px 0 36px;
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-family: var(--serif);
-      font-size: clamp(46px, 6vw, 76px);
-      line-height: .96;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .hero h1 span {
-      color: var(--gold);
-    }
-
-    .gold-line {
-      width: 72px;
-      height: 2px;
-      background: var(--gold);
-      margin: 24px 0 18px;
-    }
-
-    .hero p {
-      margin: 0 0 26px;
-      font-size: 20px;
-      color: var(--text);
-      letter-spacing: .4px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .comparison-card {
-      background: var(--white);
-      box-shadow: var(--shadow);
-      border: 1px solid var(--line);
-    }
-
-    .comparison-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      position: relative;
-    }
-
-    .comparison-label {
-      padding: 12px;
-      text-align: center;
-      color: var(--white);
-      background: var(--black);
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .comparison-label.after {
-      background: var(--gold);
-    }
-
-    .comparison-img {
-      min-height: 430px;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .before-img {
-      background-image: url("images/before-blazer.jpg");
-    }
-
-    .after-img {
-      background-image: url("images/after-blazer.jpg");
-    }
-
-    .arrow-circle {
-      position: absolute;
-      left: 50%;
-      top: 52%;
-      transform: translate(-50%, -50%);
-      width: 64px;
-      height: 64px;
-      border-radius: 999px;
-      background: var(--gold);
-      color: var(--white);
-      border: 3px solid var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 34px;
-      z-index: 3;
-    }
-
-    .value-strip {
-      background: var(--black);
-      color: var(--white);
-      padding: 28px 0;
-    }
-
-    .value-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-    }
-
-    .value-item {
-      display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: 18px;
-      align-items: center;
-      padding: 0 24px;
-      border-right: 1px solid rgba(255,255,255,.28);
-    }
-
-    .value-item:last-child {
-      border-right: none;
-    }
-
-    .value-icon {
-      color: var(--gold);
-      font-size: 42px;
-      line-height: 1;
-    }
-
-    .value-item h3 {
-      margin: 0 0 8px;
-      font-size: 14px;
-      letter-spacing: .8px;
-      text-transform: uppercase;
-    }
-
-    .value-item p {
-      margin: 0;
-      color: #e8e1d7;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .section {
-      padding: 54px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-
-    .section-title h2 {
-      margin: 0;
-      font-family: var(--serif);
-      font-size: 28px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .section-title .title-line {
-      width: 160px;
-      height: 1px;
-      background: var(--gold);
-      margin: 14px auto 0;
-    }
-
-    .ba-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 26px;
-    }
-
-    .ba-card {
-      background: var(--white);
-      border: 1px solid var(--line);
-      box-shadow: 0 10px 30px rgba(0,0,0,.06);
-    }
-
-    .ba-images {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      position: relative;
-    }
-
-    .ba-img {
-      min-height: 210px;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .tee-before {
-      background-image: url("images/before-tee.jpg");
-    }
-
-    .tee-after {
-      background-image: url("images/after-tee.jpg");
-    }
-
-    .dress-before {
-      background-image: url("images/before-dress.jpg");
-    }
-
-    .dress-after {
-      background-image: url("images/after-dress.jpg");
-    }
-
-    .jeans-before {
-      background-image: url("images/before-jeans.jpg");
-    }
-
-    .jeans-after {
-      background-image: url("images/after-jeans.jpg");
-    }
-
-    .mini-arrow {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      background: var(--gold);
-      color: white;
-      border: 2px solid white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-    }
-
-    .ba-caption {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding: 12px 14px 16px;
-      gap: 12px;
-      text-align: center;
-      font-size: 12px;
-    }
-
-    .ba-caption strong {
-      display: block;
-      margin-bottom: 5px;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-
-    .split-cta {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 0;
-      margin-top: 34px;
-      background: #eee3d5;
-      border: 1px solid var(--line);
-      overflow: hidden;
-    }
-
-    .studio-img {
-      min-height: 300px;
-      background-image: url("images/sewing-studio.jpg");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .store-cta {
-      padding: 46px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .store-icon {
-      width: 76px;
-      height: 76px;
-      border: 1px solid var(--gold);
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold);
-      font-size: 34px;
-      margin-bottom: 20px;
-    }
-
-    .store-cta h2 {
-      margin: 0 0 14px;
-      font-family: var(--serif);
-      font-size: 34px;
-      text-transform: uppercase;
-    }
-
-    .store-cta p {
-      margin: 0 0 24px;
-      color: var(--text);
-      font-size: 18px;
-      line-height: 1.5;
-    }
-
-    .footer {
-      background: var(--black);
-      color: var(--white);
-      padding: 36px 0;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr 1fr;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .footer-logo .logo-main {
-      font-size: 38px;
-    }
-
-    .footer-logo .logo-sub {
-      color: var(--gold);
-    }
-
-    .footer-tagline {
-      text-align: center;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 5px;
-      font-size: 13px;
-    }
-
-    .footer-contact {
-      display: flex;
-      justify-content: flex-end;
-      gap: 18px;
-      font-size: 24px;
-    }
-
-    @media (max-width: 920px) {
-      .nav {
-        height: auto;
-        padding: 20px 0;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero-grid,
-      .split-cta,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .comparison-img {
-        min-height: 340px;
-      }
-
-      .value-grid,
-      .ba-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .value-item {
-        border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,.2);
-        padding: 20px 0;
-      }
-
-      .value-item:last-child {
-        border-bottom: none;
-      }
-
-      .footer-tagline,
-      .footer-contact {
-        text-align: left;
-        justify-content: flex-start;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .hero {
-        padding-top: 24px;
-      }
-
-      .hero h1 {
-        font-size: 42px;
-      }
-
-      .hero p {
-        font-size: 17px;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .comparison-img {
-        min-height: 260px;
-      }
-
-      .ba-img {
-        min-height: 160px;
-      }
-
-      .store-cta {
-        padding: 28px;
-      }
-
-      .store-cta h2 {
-        font-size: 28px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
 
-  <header class="topbar">
-    <div class="container">
-      <nav class="nav">
-        <a href="index.html" class="logo" aria-label="YENA Custom Studio Home">
-          <span class="logo-main">YENA</span>
-          <span class="logo-sub">CUSTOM STUDIO</span>
-        </a>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html">
+      <img src="images/logo_primary.png" alt="YENA Custom Studio">
+    </a>
 
-        <div class="nav-links">
-          <a href="services.html">Services</a>
-          <a href="how-it-works.html">How It Works</a>
-          <a href="partner.html">Partner With Yena</a>
-          <a href="about.html">About</a>
-          <a href="book.html" class="btn">Book Now</a>
-        </div>
+    <details class="mobile-menu">
+      <summary>Menu</summary>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="partner.html">Partner With Yena</a>
+        <a href="book.html">Book Now</a>
       </nav>
-    </div>
-  </header>
+    </details>
 
-  <main>
+    <nav class="desktop-nav">
+      <a class="active" href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="partner.html">Partner With Yena</a>
+      <a class="nav-btn" href="book.html">Book Now</a>
+    </nav>
+  </div>
+</header>
 
-    <section class="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <h1>
-              We Transform<br />
-              <span>Thrift Finds</span><br />
-              Into Pieces<br />
-              You Love.
-            </h1>
-
-            <div class="gold-line"></div>
-
-            <p>Better fit. Better style. Better you.</p>
-
-            <div class="hero-actions">
-              <a class="btn" href="book.html">Book a Custom Alteration</a>
-              <a class="btn secondary" href="partner.html">Partner With Yena</a>
-            </div>
-          </div>
-
-          <div class="comparison-card">
-            <div class="comparison-grid">
-              <div class="comparison-label">Before</div>
-              <div class="comparison-label after">After</div>
-
-              <div class="comparison-img before-img"></div>
-              <div class="comparison-img after-img"></div>
-
-              <div class="arrow-circle">→</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="value-strip">
-      <div class="container">
-        <div class="value-grid">
-
-          <div class="value-item">
-            <div class="value-icon">▣</div>
-            <div>
-              <h3>Custom Alterations</h3>
-              <p>Perfect fit made just for you.</p>
-            </div>
-          </div>
-
-          <div class="value-item">
-            <div class="value-icon">♡</div>
-            <div>
-              <h3>One-of-a-Kind Style</h3>
-              <p>Creative redesigns. Unique pieces.</p>
-            </div>
-          </div>
-
-          <div class="value-item">
-            <div class="value-icon">⌁</div>
-            <div>
-              <h3>Sustainable Fashion</h3>
-              <p>Upcycle. Restyle. Reduce waste.</p>
-            </div>
-          </div>
-
-          <div class="value-item">
-            <div class="value-icon">◇</div>
-            <div>
-              <h3>Quality Crafted</h3>
-              <p>Professional finish. Built to last.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Before & After Transformations</h2>
-          <div class="title-line"></div>
-        </div>
-
-        <div class="ba-grid">
-
-          <article class="ba-card">
-            <div class="ba-images">
-              <div class="ba-img tee-before"></div>
-              <div class="ba-img tee-after"></div>
-              <div class="mini-arrow">→</div>
-            </div>
-            <div class="ba-caption">
-              <div>
-                <strong>Before</strong>
-                Too big. Outdated.
-              </div>
-              <div>
-                <strong>After</strong>
-                Tailored. Modern. Chic.
-              </div>
-            </div>
-          </article>
-
-          <article class="ba-card">
-            <div class="ba-images">
-              <div class="ba-img dress-before"></div>
-              <div class="ba-img dress-after"></div>
-              <div class="mini-arrow">→</div>
-            </div>
-            <div class="ba-caption">
-              <div>
-                <strong>Before</strong>
-                Too long. Not flattering.
-              </div>
-              <div>
-                <strong>After</strong>
-                Reimagined. Unique.
-              </div>
-            </div>
-          </article>
-
-          <article class="ba-card">
-            <div class="ba-images">
-              <div class="ba-img jeans-before"></div>
-              <div class="ba-img jeans-after"></div>
-              <div class="mini-arrow">→</div>
-            </div>
-            <div class="ba-caption">
-              <div>
-                <strong>Before</strong>
-                Too loose. Unflattering.
-              </div>
-              <div>
-                <strong>After</strong>
-                Fits perfect. Made for you.
-              </div>
-            </div>
-          </article>
-
-        </div>
-
-        <div class="split-cta">
-          <div class="studio-img"></div>
-
-          <div class="store-cta">
-            <div class="store-icon">⌂</div>
-            <h2>For Thrift Stores</h2>
-            <p>
-              Help your customers buy more by solving the #1 reason they walk away:
-              the fit is wrong.
-            </p>
-            <a class="btn" href="partner.html">Partner With Yena</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-
-        <div class="footer-logo logo">
-          <span class="logo-main">YENA</span>
-          <span class="logo-sub">CUSTOM STUDIO</span>
-        </div>
-
-        <div class="footer-tagline">
-          Custom Fit • Custom Style • Custom You
-        </div>
-
-        <div class="footer-contact">
-          <a href="#" aria-label="Instagram">◎</a>
-          <a href="mailto:hello@yena.studio" aria-label="Email">✉</a>
-        </div>
-
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1>We Transform <span>Thrift Finds</span> Into Pieces You Love.</h1>
+      <div class="gold-line"></div>
+      <p>Better fit. Better style. Better you.</p>
+      <div class="hero-actions">
+        <a class="btn" href="book.html">Book a Custom Alteration</a>
+        <a class="btn secondary" href="partner.html">Partner With Yena</a>
       </div>
     </div>
-  </footer>
+
+    <div class="before-after-box">
+      <div class="ba-panel">
+        <div class="ba-label">Before</div>
+        <div class="ba-image">Before Image</div>
+      </div>
+      <div class="ba-panel">
+        <div class="ba-label after">After</div>
+        <div class="ba-image">After Image</div>
+      </div>
+      <div class="ba-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<section class="value-strip">
+  <div class="container value-grid">
+    <div class="value-item">
+      <h3>From Thrift To Tailored</h3>
+      <p>Custom alterations. Creative redesigns. One-of-a-kind style.</p>
+    </div>
+    <div class="value-item">
+      <h3>Made For You</h3>
+      <p>Every piece is customized to fit your body and style.</p>
+    </div>
+    <div class="value-item">
+      <h3>Sustainable Style</h3>
+      <p>We upcycle and reimagine clothes to give them a second life.</p>
+    </div>
+    <div class="value-item">
+      <h3>Quality Crafted</h3>
+      <p>Professional finish. Premium details. Built to last.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Before & After Transformations</h2>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="placeholder">T-Shirt Before / After</div>
+        <h3>Streetwear Redesign</h3>
+        <p>Too big and outdated becomes tailored, modern, and chic.</p>
+      </div>
+
+      <div class="card">
+        <div class="placeholder">Dress Before / After</div>
+        <h3>Dress Restyle</h3>
+        <p>Too long and unflattering becomes reimagined, flattering, and unique.</p>
+      </div>
+
+      <div class="card">
+        <div class="placeholder">Jeans Before / After</div>
+        <h3>Perfect Fit</h3>
+        <p>Loose and awkward becomes fitted, polished, and made for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#efe5d8;">
+  <div class="container partner-banner">
+    <div>
+      <h2>For Thrift Stores</h2>
+      <p>Help your customers buy more by solving the #1 reason they walk away: the fit is wrong.</p>
+    </div>
+    <a class="btn" href="partner.html">Partner With Yena</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <img src="images/logo_primary.png" alt="YENA Custom Studio">
+    <div class="footer-tagline">Custom Fit • Custom Style • Custom You</div>
+    <div class="footer-contact">
+      <a href="#">Instagram</a>
+      <a href="mailto:hello@yena.studio">Email</a>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
