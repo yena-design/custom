@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Now | YENA Custom Studio</title>
-  <link rel="icon" href="images/logo_icon.png">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
 
 <header class="site-header">
@@ -32,115 +30,73 @@
       <a href="services.html">Services</a>
       <a href="how-it-works.html">How It Works</a>
       <a href="partner.html">Partner</a>
-      <a class="active nav-button" href="book.html">Book Now</a>
+      <a class="nav-button active" href="book.html">Book Now</a>
     </nav>
   </div>
 </header>
 
-<main>
-
 <section class="page-hero">
   <div class="container">
     <h1>Book A <span>Custom Alteration</span></h1>
-    <div class="divider"></div>
     <p>Tell Yena what you bought and what you want changed.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container form-grid">
-
-    <div class="form-box">
-      <h2 style="font-family:var(--serif);text-transform:uppercase;">Submit Your Request</h2>
+    <div class="card">
+      <h2>Submit Your Request</h2>
 
       <form>
-        <div class="form-field">
-          <label>Full Name</label>
-          <input type="text" required>
-        </div>
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="tel" placeholder="Phone Number">
+        <input type="text" placeholder="Where did you buy the item?">
 
-        <div class="form-field">
-          <label>Email Address</label>
-          <input type="email" required>
-        </div>
+        <select>
+          <option>Type of Garment</option>
+          <option>Shirt</option>
+          <option>Dress</option>
+          <option>Pants</option>
+          <option>Jacket</option>
+          <option>Skirt</option>
+          <option>Other</option>
+        </select>
 
-        <div class="form-field">
-          <label>Phone Number</label>
-          <input type="tel">
-        </div>
+        <textarea placeholder="What do you want changed?"></textarea>
 
-        <div class="form-field">
-          <label>Where did you buy the item?</label>
-          <input type="text">
-        </div>
+        <input type="file">
 
-        <div class="form-field">
-          <label>Type of Garment</label>
-          <select>
-            <option>Select one</option>
-            <option>Shirt</option>
-            <option>Dress</option>
-            <option>Pants</option>
-            <option>Jacket</option>
-            <option>Skirt</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div class="form-field">
-          <label>What do you want changed?</label>
-          <textarea></textarea>
-        </div>
-
-        <div class="form-field">
-          <label>Upload Photo</label>
-          <input type="file">
-        </div>
-
-        <div class="form-field">
-          <label>Preferred Turnaround Time</label>
-          <select>
-            <option>Select one</option>
-            <option>Standard: 3–7 days</option>
-            <option>Rush: 24–48 hours</option>
-            <option>Flexible</option>
-          </select>
-        </div>
+        <select>
+          <option>Preferred Turnaround Time</option>
+          <option>Standard: 3–7 days</option>
+          <option>Rush: 24–48 hours</option>
+          <option>Flexible</option>
+        </select>
 
         <button class="btn" type="submit">Submit Request</button>
       </form>
     </div>
 
-    <aside>
-      <div class="side-box">
-        <h3>Prefer to Text or Email?</h3>
+    <div>
+      <div class="card">
+        <h2>Contact</h2>
         <p>Phone: (555) 123-4567</p>
         <p>Email: hello@yena.studio</p>
         <p>Instagram: @yena.custom.studio</p>
       </div>
 
-      <div class="side-box" style="margin-top:20px;">
-        <h3>Pricing Note</h3>
+      <div class="card" style="margin-top:20px;">
+        <h2>Pricing Note</h2>
         <p>Every piece is unique. Final pricing will be confirmed after review.</p>
       </div>
-    </aside>
-
+    </div>
   </div>
 </section>
 
-</main>
-
 <footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-logo">
-      <img src="images/logo_primary.png" alt="YENA Custom Studio">
-    </div>
-    <div class="footer-tagline">Custom Fit • Custom Style • Custom You</div>
-    <div class="footer-contact">
-      <a href="#">Instagram</a>
-      <a href="mailto:hello@yena.studio">Email</a>
-    </div>
-  </div>
+  <img src="images/logo_primary.png" alt="YENA Custom Studio">
+  <p>Custom Fit • Custom Style • Custom You</p>
 </footer>
 
 </body>
