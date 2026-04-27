@@ -1,136 +1,266 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YENA Custom Studio | From Thrift to Tailored</title>
-  <link rel="icon" href="images/logo_icon.png">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
+* {
+  box-sizing: border-box;
+}
 
-<body>
+:root {
+  --black: #080808;
+  --cream: #fbf8f3;
+  --tan: #f0e4d4;
+  --gold: #b8893d;
+  --line: #ded2c2;
+  --text: #111;
+  --white: #fff;
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: Arial, Helvetica, sans-serif;
+}
 
-<header class="site-header">
-  <div class="container nav-wrap">
-    <a class="brand" href="index.html">
-      <img src="images/logo_primary.png" alt="YENA Custom Studio">
-    </a>
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background: var(--cream);
+  color: var(--text);
+}
 
-    <details class="mobile-menu">
-      <summary>Menu</summary>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="how-it-works.html">How It Works</a>
-        <a href="partner.html">Partner</a>
-        <a href="book.html">Book Now</a>
-      </nav>
-    </details>
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-    <nav class="desktop-nav">
-      <a class="active" href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="how-it-works.html">How It Works</a>
-      <a href="partner.html">Partner</a>
-      <a class="nav-button" href="book.html">Book Now</a>
-    </nav>
-  </div>
-</header>
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
 
-<main>
+/* HEADER */
 
-<section class="hero">
-  <div class="container hero-grid">
-    <div>
-      <h1>We Transform <span>Thrift Finds</span> Into Pieces You Love.</h1>
-      <div class="gold-line"></div>
-      <p>Better fit. Better style. Better you.</p>
-      <div class="hero-actions">
-        <a class="btn" href="book.html">Book a Custom Alteration</a>
-        <a class="btn secondary" href="partner.html">Partner With Yena</a>
-      </div>
-    </div>
+.site-header {
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+}
 
-    <div class="mock-image">
-      Add before/after hero image here
-    </div>
-  </div>
-</section>
+.nav-wrap {
+  min-height: 86px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-<section class="value-strip">
-  <div class="container value-grid">
-    <div class="value-item">
-      <h3>Custom Fit</h3>
-      <p>Designed to fit your body.</p>
-    </div>
-    <div class="value-item">
-      <h3>Custom Style</h3>
-      <p>Made to match your vibe.</p>
-    </div>
-    <div class="value-item">
-      <h3>Sustainable Fashion</h3>
-      <p>We upcycle and restyle clothes.</p>
-    </div>
-    <div class="value-item">
-      <h3>Quality Crafted</h3>
-      <p>Premium finish. Built to last.</p>
-    </div>
-  </div>
-</section>
+.brand img {
+  height: 58px;
+  width: auto;
+  display: block;
+}
 
-<section class="section">
-  <div class="container">
-    <div class="section-title">
-      <h2>Before & After Transformations</h2>
-    </div>
+.desktop-nav {
+  display: flex;
+  gap: 26px;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: .6px;
+}
 
-    <div class="card-grid">
-      <div class="card">
-        <div class="mock-image">Image</div>
-        <h3>Blazer Transformation</h3>
-        <p>Too big and outdated becomes tailored, modern, and chic.</p>
-      </div>
+.desktop-nav a:hover,
+.desktop-nav .active {
+  color: var(--gold);
+}
 
-      <div class="card">
-        <div class="mock-image">Image</div>
-        <h3>Streetwear Redesign</h3>
-        <p>A basic thrift tee becomes a custom one-of-a-kind piece.</p>
-      </div>
+.nav-button {
+  background: var(--black);
+  color: var(--white) !important;
+  padding: 12px 20px;
+}
 
-      <div class="card">
-        <div class="mock-image">Image</div>
-        <h3>Dress Restyle</h3>
-        <p>Old shape becomes flattering, fresh, and wearable.</p>
-      </div>
-    </div>
-  </div>
-</section>
+/* MOBILE MENU */
 
-<section class="section" style="background:#eee3d5;">
-  <div class="container hero-grid">
-    <div class="mock-image">Sewing / studio image</div>
-    <div>
-      <h2 style="font-family:var(--serif);text-transform:uppercase;">For Thrift Stores</h2>
-      <p>Help your customers buy more by solving the #1 reason they walk away: the fit is wrong.</p>
-      <a class="btn" href="partner.html">Partner With Yena</a>
-    </div>
-  </div>
-</section>
+.mobile-menu {
+  display: none;
+  position: relative;
+}
 
-</main>
+.mobile-menu summary {
+  cursor: pointer;
+  list-style: none;
+  background: var(--black);
+  color: var(--white);
+  padding: 12px 18px;
+  text-transform: uppercase;
+  font-size: 13px;
+}
 
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-logo">
-      <img src="images/logo_primary.png" alt="YENA Custom Studio">
-    </div>
-    <div class="footer-tagline">Custom Fit • Custom Style • Custom You</div>
-    <div class="footer-contact">
-      <a href="#">Instagram</a>
-      <a href="mailto:hello@yena.studio">Email</a>
-    </div>
-  </div>
-</footer>
+.mobile-menu summary::-webkit-details-marker {
+  display: none;
+}
 
-</body>
-</html>
+.mobile-menu nav {
+  position: absolute;
+  right: 0;
+  top: 48px;
+  width: 230px;
+  background: white;
+  border: 1px solid var(--line);
+  z-index: 99;
+}
+
+.mobile-menu nav a {
+  display: block;
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+/* GENERAL */
+
+.hero {
+  padding: 80px 0;
+  background: linear-gradient(180deg, var(--cream), var(--tan));
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 42px;
+  align-items: center;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+h1 span {
+  color: var(--gold);
+}
+
+h2 {
+  font-family: var(--serif);
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--black);
+  color: var(--white);
+  padding: 14px 24px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+
+.logo-box,
+.placeholder {
+  background: white;
+  border: 1px solid var(--line);
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.logo-box img {
+  max-width: 100%;
+  max-height: 240px;
+}
+
+.section {
+  padding: 60px 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--line);
+  padding: 30px;
+}
+
+.page-hero {
+  text-align: center;
+  padding: 70px 0;
+  background: linear-gradient(180deg, var(--cream), var(--tan));
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid var(--line);
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+textarea {
+  min-height: 110px;
+}
+
+/* FOOTER */
+
+.site-footer {
+  background: var(--black);
+  color: white;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.site-footer img {
+  height: 45px;
+  width: auto;
+  margin: 0 auto 12px;
+  display: block;
+}
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .brand img {
+    height: 48px;
+  }
+
+  .grid,
+  .cards,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    display: block;
+    text-align: center;
+    margin: 10px 0;
+  }
+}
