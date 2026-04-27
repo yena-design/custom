@@ -860,3 +860,24 @@ textarea {
   margin-top: 12px;
   text-align: center;
 }
+
+.product-status {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: .8px;
+  font-weight: bold;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
