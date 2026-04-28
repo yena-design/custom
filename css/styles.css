@@ -1364,29 +1364,28 @@ img {
   background: var(--black);
   color: var(--white);
   border-radius: 12px;
-  padding: 44px 48px;
+  padding: 44px 36px;
   display: grid;
-  grid-template-columns: 280px 58px minmax(320px, 1fr) 270px 260px;
+  grid-template-columns: 260px 44px minmax(260px, 1fr) 240px 285px;
   align-items: center;
-  gap: 34px;
-  overflow: hidden;
+  gap: 24px;
+  overflow: visible;
 }
 
 .tag-image {
   position: relative;
-  width: 260px;
-  height: 180px;
+  width: 240px;
+  height: 165px;
   z-index: 1;
-  flex: 0 0 auto;
 }
 
 .tag-image::before {
   content: "";
   position: absolute;
-  width: 260px;
-  height: 180px;
-  left: 22px;
-  top: 22px;
+  width: 240px;
+  height: 165px;
+  left: 20px;
+  top: 20px;
   background: #cbbba6;
   border-radius: 6px;
   z-index: 0;
@@ -1395,8 +1394,8 @@ img {
 .tag-image img {
   position: relative;
   z-index: 2;
-  width: 260px;
-  height: 180px;
+  width: 240px;
+  height: 165px;
   object-fit: cover;
   object-position: center;
   border-radius: 6px;
@@ -1404,7 +1403,7 @@ img {
 
 .cta-heart {
   color: var(--gold);
-  font-size: 44px;
+  font-size: 38px;
   line-height: 1;
   text-align: center;
 }
@@ -1416,7 +1415,7 @@ img {
 .cta-copy h2 {
   font-family: var(--serif);
   text-transform: uppercase;
-  font-size: clamp(30px, 3vw, 42px);
+  font-size: clamp(28px, 2.6vw, 40px);
   line-height: 1.05;
   margin: 0;
 }
@@ -1431,7 +1430,7 @@ img {
 .cta-copy p {
   margin: 0;
   color: #f1f1f1;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.45;
 }
 
@@ -1448,7 +1447,7 @@ img {
   font-size: 13px;
   letter-spacing: 1.5px;
   font-weight: 900;
-  padding: 16px 22px;
+  padding: 16px 18px;
 }
 
 .gold-btn:hover {
@@ -1458,17 +1457,17 @@ img {
 
 .cta-contact {
   border-left: 1px solid rgba(184,137,61,.75);
-  padding-left: 28px;
-  min-width: 0;
+  padding-left: 22px;
+  min-width: 270px;
+  white-space: nowrap;
 }
 
 .cta-contact p {
   margin: 13px 0;
   color: var(--white);
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.25;
 }
-
 /* =========================================================
    BOOK PAGE
 ========================================================= */
