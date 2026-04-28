@@ -39,21 +39,24 @@
   </div>
 </header>
 
+<main>
+
 <section class="shop-hero">
   <div class="container shop-hero-grid">
-    <div>
+    <div class="shop-hero-copy">
       <h1>Shop <span>Custom Style</span></h1>
       <div class="gold-line"></div>
       <p>Ready-to-wear. Reworked. One-of-a-kind.</p>
+
       <div class="hero-actions">
         <a class="btn" href="#products">Shop New Drops</a>
         <a class="btn secondary" href="book.html">Custom Pieces</a>
       </div>
     </div>
 
-<div class="shop-hero-image">
-  <img src="images/yena-shop-hero.jpg" alt="Yena Custom Studio featured fashion collection">
-</div> 
+    <div class="shop-hero-image">
+      <img src="images/yena-shop-hero.jpg" alt="Yena Custom Studio featured fashion collection">
+    </div>
   </div>
 </section>
 
@@ -63,14 +66,17 @@
       <h3>One-of-a-Kind</h3>
       <p>Each piece is unique — just like you.</p>
     </div>
+
     <div class="value-item">
       <h3>Sustainable</h3>
       <p>Upcycled fashion with a second life.</p>
     </div>
+
     <div class="value-item">
       <h3>Quality Crafted</h3>
       <p>Thoughtful details. Built to last.</p>
     </div>
+
     <div class="value-item">
       <h3>Made For You</h3>
       <p>Curated and reworked with your style in mind.</p>
@@ -80,7 +86,6 @@
 
 <section id="products" class="section">
   <div class="container">
-
     <div class="section-title">
       <h2>Shop One-of-a-Kind Pieces</h2>
     </div>
@@ -94,25 +99,59 @@
     </div>
 
     <div id="product-grid" class="product-grid"></div>
-
   </div>
 </section>
 
 <section class="shop-drop-banner">
-  <div class="container drop-grid">
-    <div class="drop-image">Drop Image</div>
-    <div class="drop-copy">
-      <h2>This Piece Is One-of-a-Kind.</h2>
-      <p>Once it’s gone, it’s gone.</p>
-      <a class="btn" href="#products">Shop New Drops</a>
+  <div class="container drop-grid luxury-drop-grid">
+
+    <div class="drop-image luxury-drop">
+      <img src="images/yena-drop-banner.jpg" alt="Yena limited drop fashion piece">
+
+      <div class="drop-overlay">
+        <span class="drop-tag">Limited Drop</span>
+        <h3>Only One Available</h3>
+        <p>Reworked by hand. Once it sells, it’s gone.</p>
+      </div>
     </div>
+
+    <div class="drop-copy luxury-drop-copy">
+      <span class="drop-kicker">New One-of-a-Kind Release</span>
+      <h2>This Piece Won’t Be Restocked.</h2>
+      <p>Every Yena drop is custom, limited, and made for someone who wants a piece nobody else has.</p>
+
+      <div class="scarcity-row">
+        <div>
+          <strong>1</strong>
+          <span>Available</span>
+        </div>
+
+        <div>
+          <strong>24h</strong>
+          <span>Featured Drop</span>
+        </div>
+
+        <div>
+          <strong>Hand</strong>
+          <span>Reworked</span>
+        </div>
+      </div>
+
+      <a class="btn" href="#products">Shop The Drop</a>
+      <p class="drop-note">If you love it, don’t wait. One-of-one means gone is gone.</p>
+    </div>
+
   </div>
 </section>
+
+</main>
 
 <footer class="site-footer">
   <div class="container footer-grid">
     <img src="images/logo_primary.png" alt="YENA Custom Studio">
+
     <div class="footer-tagline">Custom Fit • Custom Style • Custom You</div>
+
     <div class="footer-contact">
       <a href="#">Instagram</a>
       <a href="mailto:hello@yena.studio">Email</a>
@@ -171,7 +210,11 @@
 
       card.innerHTML = `
         <div class="product-image">
-          <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='Product Image';">
+          <img 
+            src="${product.image}" 
+            alt="${product.name}" 
+            onerror="this.style.display='none'; this.parentElement.innerHTML='Product Image';"
+          >
         </div>
 
         <div class="product-info">
@@ -248,6 +291,7 @@
 
     if (item.quantity <= 0) {
       removeFromCart(productId);
+      return;
     }
 
     saveCart();
@@ -279,6 +323,7 @@
         <div>
           <h3>${item.name}</h3>
           <p>$${item.price}</p>
+
           <div class="qty-controls">
             <button onclick="changeQuantity('${item.id}', -1)">−</button>
             <span>${item.quantity}</span>
