@@ -2223,3 +2223,17 @@ textarea {
     font-size: 26px;
   }
 }
+
+/* SHOP HERO IMAGE FIX */
+
+.shop-hero-image {
+  min-height: 420px;
+  overflow: hidden;
+}
+
+.shop-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
