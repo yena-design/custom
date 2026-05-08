@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
+<title id="title">Before thrift dress</title>
+<desc id="desc">A beige thrift dress on a mannequin before custom tailoring.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#efe3d2"/><stop offset="1" stop-color="#d8c2aa"/></linearGradient>
+  <linearGradient id="fabric" x1="0" x2="1"><stop stop-color="#b99a7a"/><stop offset="1" stop-color="#8b6e58"/></linearGradient>
+</defs>
+<rect width="900" height="1200" fill="url(#bg)"/>
+<rect x="74" y="80" width="752" height="1040" rx="38" fill="#fbf8f3" opacity=".78"/>
+<line x1="450" y1="188" x2="450" y2="910" stroke="#33251f" stroke-width="14" stroke-linecap="round" opacity=".35"/>
+<circle cx="450" cy="190" r="58" fill="#251915"/>
+<path d="M330 270 C392 235 508 235 570 270 L620 735 C545 792 358 792 280 735 Z" fill="url(#fabric)"/>
+<path d="M330 270 C330 372 348 432 383 456 C398 466 421 459 424 438 C432 370 407 305 330 270Z" fill="#775845" opacity=".45"/>
+<path d="M570 270 C570 375 550 430 516 455 C500 466 478 459 475 438 C468 370 493 305 570 270Z" fill="#775845" opacity=".45"/>
+<path d="M310 770 C380 820 520 820 590 770 L560 920 C503 944 397 944 340 920Z" fill="#6f5648" opacity=".9"/>
+<path d="M285 746 C365 790 535 790 615 746" fill="none" stroke="#3b2a23" stroke-width="10" opacity=".25"/>
+<path d="M277 320 C210 400 194 518 228 620" fill="none" stroke="#8b6e58" stroke-width="52" stroke-linecap="round" opacity=".75"/>
+<path d="M623 320 C690 400 706 518 672 620" fill="none" stroke="#8b6e58" stroke-width="52" stroke-linecap="round" opacity=".75"/>
+<rect x="185" y="958" width="530" height="26" rx="13" fill="#111" opacity=".18"/>
+<text x="450" y="1055" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="800" fill="#111">BEFORE</text>
+<text x="450" y="1100" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#5f574d">Oversized thrift find</text>
+</svg>
