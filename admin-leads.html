@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YENA Lead Management</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/lead-popup.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html">
+      <img src="images/logo_primary.png" alt="YENA Custom Studio">
+    </a>
+
+    <nav class="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="services.html">Services</a>
+      <a class="active" href="admin-leads.html">Lead Dashboard</a>
+    </nav>
+  </div>
+</header>
+
+<main class="leads-admin-main">
+  <div class="container">
+
+    <div class="section-title compact">
+      <h2>Lead Generation Dashboard</h2>
+      <p>Captured popup leads from the YENA website.</p>
+    </div>
+
+    <div class="leads-admin-panel">
+
+      <div class="leads-admin-actions">
+        <button data-export-leads>Export CSV</button>
+        <a class="secondary" href="index.html">Return To Site</a>
+      </div>
+
+      <table class="leads-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Coupon</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody data-leads-body>
+          <tr>
+            <td colspan="5">Loading leads...</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+</main>
+
+<script src="js/lead-popup.js"></script>
+</body>
+</html>
