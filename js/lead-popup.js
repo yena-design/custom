@@ -1,6 +1,36 @@
 const YENA_LEADS_KEY = 'yenaLeads';
 const YENA_LEAD_CLOSED_KEY = 'yenaLeadClosed';
 const YENA_COUPON = 'YENA10';
+const YENA_LEAD_SOURCE = 'homepage_popup';
+
+const SUPABASE_URL = 'https://ujnrtjocbaggivaspcgp.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_M0UKn3iDg-wy3_QuAWGu_g_1Vli7oiS';
+
+const supabaseClient = window.supabase?.createClient
+  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+  : null;
+
+async function saveLeadToSupabase(email) {
+  if (!supabaseClient) {
+    console.error('Failed to save YENA lead: Supabase client is not initialized.');
+    return false;
+  }
+
+  const { error } = await supabaseClient
+    .from('leads')
+    .insert({
+      email,
+      coupon: YENA_COUPON,
+      source: YENA_LEAD_SOURCE
+    });
+
+  if (error) {
+    console.error('Failed to save YENA lead to Supabase:', error);
+    return false;
+  }
+
+  return true;
+}
 
 function getLeads() {
   try {
@@ -9,16 +39,6 @@ function getLeads() {
   } catch {
     return [];
   }
-}
-
-function saveLead(email) {
-  const leads = getLeads();
-  leads.unshift({
-    email,
-    coupon: YENA_COUPON,
-    createdAt: new Date().toISOString()
-  });
-  localStorage.setItem(YENA_LEADS_KEY, JSON.stringify(leads));
 }
 
 function downloadCSV(leads) {
@@ -59,13 +79,15 @@ function initPopup() {
     if (event.target === overlay) closePopup();
   });
 
-  form?.addEventListener('submit', (event) => {
+  form?.addEventListener('submit', async (event) => {
     event.preventDefault();
     const emailInput = form.querySelector('input[name="email"]');
     const email = emailInput?.value.trim();
     if (!email) return;
 
-    saveLead(email);
+    const saved = await saveLeadToSupabase(email);
+    if (!saved) return;
+
     form.classList.add('is-hidden');
     success?.classList.add('is-visible');
     localStorage.setItem(YENA_LEAD_CLOSED_KEY, 'true');
@@ -81,7 +103,7 @@ function initAdminLeads() {
   if (totalEl) totalEl.textContent = String(leads.length);
 
   if (!leads.length) {
-    leadsBody.innerHTML = '<tr><td colspan="3">No leads captured yet.</td></tr>';
+    leadsBody.innerHTML = '<tr><td colspan="3">No local leads captured yet.</td></tr>';
   } else {
     leadsBody.innerHTML = leads.map((lead) => `
       <tr>
