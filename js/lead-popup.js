@@ -3,8 +3,8 @@ const YENA_LEAD_CLOSED_KEY = 'yenaLeadClosed';
 const YENA_COUPON = 'YENA10';
 const YENA_LEAD_SOURCE = 'homepage_popup';
 
-const SUPABASE_URL = 'SUPABASE_URL_HERE';
-const SUPABASE_ANON_KEY = 'SUPABASE_ANON_KEY_HERE';
+const SUPABASE_URL = 'https://ujnrtjocbaggivaspcgp.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_M0UKn3iDg-wy3_QuAWGu_g_1Vli7oiS';
 
 const supabaseClient = window.supabase?.createClient
   ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
