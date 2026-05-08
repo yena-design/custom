@@ -2615,3 +2615,24 @@ img {
     font-size: 20px;
   }
 }
+
+/* Lead popup + admin dashboard refinements */
+.yena-lead-form.is-hidden { display: none; }
+.yena-lead-copy { text-align: left; }
+.yena-lead-copy h2 { font-size: clamp(48px, 6vw, 74px); text-transform: uppercase; }
+.yena-lead-copy h3 { font-family: var(--serif); letter-spacing: 1px; font-size: 32px; text-transform: uppercase; }
+.yena-lead-rule { margin: 18px 0 26px; background: var(--gold); }
+.yena-lead-success { font-weight: 600; color: #2d2416; }
+
+.leads-admin-stats {
+  font-family: var(--serif);
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: var(--black);
+}
+
+@media (max-width: 900px) {
+  .yena-lead-modal { grid-template-columns: 1fr; }
+  .yena-lead-copy { order: 2; padding: 28px 22px 30px; }
+  .yena-lead-image { order: 1; min-height: 280px; }
+}
