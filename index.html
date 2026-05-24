@@ -1,245 +1,848 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YENA Custom Studio | From Thrift to Tailored</title>
-  <link rel="stylesheet" href="css/styles.css?v=20260508-yena-home-fix-2">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Box Chairs | Sit Outside the Box</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --red: #ef4338;
+      --orange: #ff9518;
+      --blue: #2d93d1;
+      --dark: #20262b;
+      --slate: #3f4850;
+      --gray: #6f777d;
+      --light: #f6f8fa;
+      --white: #ffffff;
+      --shadow: 0 20px 50px rgba(0, 0, 0, .12);
+      --radius: 28px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--white);
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid #e8edf2;
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .site-logo {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+      font-weight: 700;
+      font-size: .92rem;
+      color: var(--gray);
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      border: 0;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: white;
+      box-shadow: 0 14px 30px rgba(239, 67, 56, .28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--slate);
+      color: var(--slate);
+      background: transparent;
+    }
+
+    .hero {
+      padding: 86px 0 72px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(45,147,209,.14), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-size: .82rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(3.1rem, 7vw, 6.8rem);
+      line-height: .9;
+      letter-spacing: -.08em;
+      color: var(--red);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      max-width: 620px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .proof-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 620px;
+    }
+
+    .proof {
+      background: white;
+      padding: 18px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .proof strong {
+      display: block;
+      color: var(--slate);
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .proof span {
+      color: var(--gray);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .chair-card {
+      position: relative;
+      min-height: 520px;
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, #ff9f1c, #ef4338);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      padding: 36px;
+      color: white;
+    }
+
+    .chair-shape {
+      position: absolute;
+      right: -25px;
+      bottom: -35px;
+      width: 78%;
+      height: 78%;
+      background: rgba(255,255,255,.16);
+      clip-path: polygon(20% 0, 100% 18%, 90% 100%, 0 86%);
+    }
+
+    .chair-card h2 {
+      position: relative;
+      z-index: 2;
+      font-size: 4.2rem;
+      line-height: .9;
+      letter-spacing: -.06em;
+      text-transform: uppercase;
+      max-width: 420px;
+    }
+
+    .chair-card .tag {
+      position: relative;
+      z-index: 2;
+      margin-top: 20px;
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.22);
+      font-weight: 900;
+    }
+
+    section {
+      padding: 76px 0;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin-bottom: 38px;
+    }
+
+    .section-title.center {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1;
+      letter-spacing: -.06em;
+      color: var(--slate);
+      margin-bottom: 14px;
+    }
+
+    .section-title p {
+      color: var(--gray);
+      font-size: 1.1rem;
+    }
+
+    .video-section {
+      background: var(--dark);
+      color: white;
+      padding: 46px 0 42px;
+    }
+
+    .video-section .section-title {
+      margin-bottom: 24px;
+    }
+
+    .video-section .section-title h2,
+    .video-section .section-title p {
+      color: white;
+    }
+
+    .video-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #000;
+    }
+
+    .video-wrap iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+    }
+
+    .photo-slider-section {
+      background: #ffffff;
+      padding: 36px 0 64px;
+    }
+
+    .photo-slider-section .section-title {
+      margin-bottom: 18px;
+    }
+
+    .photo-slider-section .eyebrow {
+      margin-bottom: 0;
+    }
+
+    .photo-slider {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: var(--dark);
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform .45s ease;
+    }
+
+    .slide {
+      min-width: 100%;
+      height: 540px;
+      background: var(--dark);
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 50px;
+      height: 50px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,.92);
+      color: var(--slate);
+      font-size: 2.1rem;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,.18);
+    }
+
+    .slider-btn.prev {
+      left: 18px;
+    }
+
+    .slider-btn.next {
+      right: 18px;
+    }
+
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+      margin-top: 18px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 0;
+      background: #cfd8e3;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: var(--red);
+      width: 28px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e7edf3;
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 14px 35px rgba(0,0,0,.06);
+    }
+
+    .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: rgba(45,147,209,.14);
+      color: var(--blue);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--blue);
+      text-transform: uppercase;
+    }
+
+    .card p {
+      color: var(--gray);
+      font-size: .96rem;
+    }
+
+    .dark-band {
+      background: var(--dark);
+      color: white;
+    }
+
+    .dark-band .section-title h2,
+    .dark-band .section-title p {
+      color: white;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 24px;
+      padding: 28px;
+    }
+
+    .step-number {
+      color: var(--orange);
+      font-size: 2.4rem;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .pricing-note {
+      background: #fff7ec;
+      border: 1px solid #ffe0b6;
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      max-width: 920px;
+    }
+
+    .pricing-note h3 {
+      color: var(--red);
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .pricing-note p {
+      color: var(--gray);
+      margin-bottom: 18px;
+      font-size: 1.05rem;
+    }
+
+    .pricing-note .hero-actions {
+      margin-bottom: 0;
+    }
+
+    .cta {
+      background:
+        linear-gradient(135deg, rgba(239,67,56,.94), rgba(255,149,24,.94)),
+        #ef4338;
+      color: white;
+      text-align: center;
+      padding: 86px 0;
+    }
+
+    .cta h2 {
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      line-height: .95;
+      letter-spacing: -.07em;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    .cta p {
+      max-width: 720px;
+      margin: 0 auto 28px;
+      font-size: 1.15rem;
+    }
+
+    .cta .btn {
+      background: white;
+      color: var(--red);
+    }
+
+    footer {
+      padding: 34px 0;
+      background: var(--dark);
+      color: #cbd3da;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: .92rem;
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        height: 72px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .site-logo {
+        height: 44px;
+      }
+
+      .hero {
+        padding: 56px 0 50px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .steps,
+      .proof-row {
+        grid-template-columns: 1fr;
+      }
+
+      .chair-card {
+        min-height: 390px;
+      }
+
+      .chair-card h2 {
+        font-size: 3.2rem;
+      }
+
+      section {
+        padding: 56px 0;
+      }
+
+      .video-section {
+        padding: 34px 0 28px;
+      }
+
+      .video-section .section-title {
+        margin-bottom: 18px;
+      }
+
+      .photo-slider-section {
+        padding: 26px 0 46px;
+      }
+
+      .photo-slider-section .section-title {
+        margin-bottom: 14px;
+      }
+
+      .slide {
+        height: 330px;
+      }
+
+      .slider-btn {
+        width: 42px;
+        height: 42px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="site-header">
-  <div class="container nav-wrap">
-    <a class="brand" href="index.html">
-      <img src="images/logo_primary.png" alt="YENA Custom Studio">
+<header>
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="images/logo.png" alt="Box Chairs Logo" class="site-logo" />
     </a>
 
-    <details class="mobile-menu">
-      <summary>Menu</summary>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="shop.html">Shop</a>
-        <a href="how-it-works.html">How It Works</a>
-        <a href="partner.html">Partner With Yena</a>
-        <a href="book.html">Book Now</a>
-      </nav>
-    </details>
-
-    <nav class="desktop-nav">
-      <a class="active" href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="shop.html">Shop</a>
-      <a href="how-it-works.html">How It Works</a>
-      <a href="partner.html">Partner With Yena</a>
-      <a class="nav-btn" href="book.html">Book Now</a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#video">Video</a>
+      <a href="#photos">Photos</a>
+      <a href="#services">Services</a>
+      <a href="#pricing">Request Pricing</a>
+      <a href="#contact" class="btn btn-primary">Start an Order</a>
     </nav>
   </div>
 </header>
 
 <main>
 
-<section class="home-hero yena-home-approved">
-  <div class="container home-hero-grid">
-
-    <div class="home-copy">
-      <h1>
-        We Transform<br>
-        <span>Thrift Finds</span><br>
-        Into Pieces<br>
-        You Love.
-      </h1>
-
-      <div class="gold-line"></div>
-
-      <p>Better fit. Better style. Better you.</p>
-
-      <div class="hero-actions">
-        <a class="btn" href="book.html">Book A Custom Alteration</a>
-        <a class="btn secondary" href="partner.html">Partner With Yena</a>
-      </div>
-    </div>
-
-    <div class="home-before-after home-hero-ba">
-      <div class="home-ba-col">
-        <div class="home-ba-label">Before</div>
-        <figure class="home-ba-img before">
-          <img src="images/hero-before.jpg" alt="Oversized thrift denim shirt before YENA transformation">
-        </figure>
-      </div>
-
-      <div class="home-ba-col">
-        <div class="home-ba-label after">After</div>
-        <figure class="home-ba-img after">
-          <img src="images/hero-after.jpg" alt="Tailored denim fashion look after YENA transformation">
-        </figure>
-      </div>
-
-      <div class="home-ba-arrow" aria-hidden="true">→</div>
-    </div>
-
-  </div>
-</section>
-
-<section class="home-value-strip">
-  <div class="container home-value-grid">
-
-    <div class="home-value-item">
-    <div class="home-value-icon">♤</div>
+  <section class="hero">
+    <div class="container hero-grid">
       <div>
-        <h3>From Thrift To Tailored</h3>
-        <p>Custom alterations. Creative redesigns. One-of-a-kind style.</p>
+        <div class="eyebrow">Eco-Friendly Event Seating</div>
+        <h1>Sit Outside The Box</h1>
+        <p>
+          Custom printed cardboard chairs made from recycled materials for events,
+          brands, campuses, sports promotions, festivals, and experiential marketing campaigns.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Create Your Box Chairs</a>
+          <a href="#pricing" class="btn btn-outline">Request Pricing</a>
+        </div>
+
+        <div class="proof-row">
+          <div class="proof">
+            <strong>485 lbs</strong>
+            <span>Weight tested</span>
+          </div>
+          <div class="proof">
+            <strong>Custom</strong>
+            <span>Full-color graphics</span>
+          </div>
+          <div class="proof">
+            <strong>Recycled</strong>
+            <span>Cardboard material</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chair-card">
+        <div class="chair-shape"></div>
+        <h2>Brandable Seating That Gets Seen</h2>
+        <span class="tag">Made for outdoor events, sponsors & campaigns</span>
       </div>
     </div>
+  </section>
 
-    <div class="home-value-item">
-      <div class="home-value-icon">♡</div>
-      <div>
-        <h3>Made For You</h3>
-        <p>Every piece is customized to fit your body and style.</p>
+  <section id="video" class="video-section">
+    <div class="container">
+      <div class="section-title center">
+        <div class="eyebrow">Promo Video</div>
+        <h2>See the Box Chairs concept.</h2>
+        <p>
+          A quick look at how branded cardboard seating can turn events, sponsors,
+          and campaigns into something people notice, use, and remember.
+        </p>
+      </div>
+
+      <div class="video-wrap">
+        <iframe
+          src="https://player.vimeo.com/video/222241089"
+          title="Box Chairs Promo Video"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
+  </section>
 
-    <div class="home-value-item">
-      <div class="home-value-icon">♧</div>
-      <div>
-        <h3>Sustainable Style</h3>
-        <p>We upcycle and reimagine clothes to give them a second life.</p>
-      </div>
-    </div>
-
-    <div class="home-value-item">
-      <div class="home-value-icon">◇</div>
-      <div>
-        <h3>Quality Crafted</h3>
-        <p>Professional finish. Premium details. Built to last.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section class="home-transform-section yena-transform-approved">
+<section id="photos" class="photo-slider-section">
   <div class="container">
-
-    <div class="home-section-title">
-      <span></span>
-      <h2>Before &amp; After Transformations</h2>
-      <span></span>
+    <div class="section-title center">
+      <div class="eyebrow">Product Photos</div>
     </div>
 
-    <div class="home-transform-grid">
+    <div class="photo-slider">
+      <button class="slider-btn prev" type="button" aria-label="Previous slide">‹</button>
 
-      <article class="home-transform-card">
-        <div class="mini-ba">
-          <figure class="mini-img">
-            <img src="images/oversized-tee.jpg" alt="Oversized thrift tee before tailoring">
-          </figure>
-          <figure class="mini-img">
-            <img src="images/custom-tee.jpg" alt="Oversized thrift tee transformed into fitted streetwear">
-          </figure>
-          <div class="mini-arrow" aria-hidden="true">→</div>
-        </div>
-        <div class="mini-captions">
-          <p>Too big. Outdated.</p>
-          <p>Tailored. Modern. Chic.</p>
-        </div>
-      </article>
-
-      <article class="home-transform-card">
-        <div class="mini-ba">
-          <figure class="mini-img">
-            <img src="images/too-long.jpg" alt="Long thrift dress before alteration">
-          </figure>
-          <figure class="mini-img">
-            <img src="images/too-long-after.jpg" alt="Long dress reimagined into elegant tailored dress">
-          </figure>
-          <div class="mini-arrow" aria-hidden="true">→</div>
-        </div>
-        <div class="mini-captions">
-          <p>Too long. Not flattering.</p>
-          <p>Reimagined. Flattering. Unique.</p>
-        </div>
-      </article>
-
-      <article class="home-transform-card">
-        <div class="mini-ba">
-          <figure class="mini-img">
-            <img src="images/too-loose-before.jpg" alt="Loose jeans before YENA tailoring">
-          </figure>
-          <figure class="mini-img">
-            <img src="images/too-loose-after.jpg" alt="Loose jeans after modern fitted tailoring">
-          </figure>
-          <div class="mini-arrow" aria-hidden="true">→</div>
-        </div>
-        <div class="mini-captions">
-          <p>Too loose. Unflattering.</p>
-          <p>Fits perfect. Made for you.</p>
-        </div>
-      </article>
-
-    </div>
-
-    <div class="home-store-cta">
-
-      <div class="home-sewing-image">
-        <img src="images/sewing-studio-yena.jpg" alt="Yena Custom Studio sewing workspace">
+      <div class="slider-track" id="sliderTrack">
+        <div class="slide"><img src="images/productphotos/photo15.jpg" alt="Custom branded Box Chair product photo" /></div>
+        <div class="slide"><img src="images/productphotos/photo16.jpg" alt="Custom branded Box Chair product photo" /></div>
+        <div class="slide"><img src="images/productphotos/photo1.jpg" alt="Custom branded Box Chair product photo" /></div>
+        <div class="slide"><img src="images/productphotos/photo2.jpg" alt="Printed cardboard event chair product photo" /></div>
+        <div class="slide"><img src="images/productphotos/photo3.jpg" alt="Eco-friendly promotional chair product photo" /></div>
+        <div class="slide"><img src="images/productphotos/photo4.jpg" alt="Box Chair event seating product photo" /></div>
+        <div class="slide"><img src="images/productphotos/photo5.jpg" alt="Custom cardboard chair campaign product photo" /></div>
+        <div class="slide"><img src="images/productphotos/photo6.jpg" alt="Custom cardboard chair campaign product photo" /></div>
+        <div class="slide"><img src="images/productphotos/photo7.jpg" alt="Custom cardboard chair campaign product photo" /></div>
+        <div class="slide"><img src="images/productphotos/photo8.jpg" alt="Custom cardboard chair campaign product photo" /></div>
+        <div class="slide"><img src="images/productphotos/photo9.jpg" alt="Custom cardboard chair campaign product photo" /></div>
+        <div class="slide"><img src="images/productphotos/photo10.jpg" alt="Custom cardboard chair campaign product photo" /></div>
+        <div class="slide"><img src="images/productphotos/photo11.jpg" alt="Custom cardboard chair campaign product photo" /></div>
+        <div class="slide"><img src="images/productphotos/photo12.jpg" alt="Custom cardboard chair campaign product photo" /></div>
+        <div class="slide"><img src="images/productphotos/photo13.jpg" alt="Custom cardboard chair campaign product photo" /></div>
+        <div class="slide"><img src="images/productphotos/photo14.jpg" alt="Custom cardboard chair campaign product photo" /></div>
       </div>
 
-      <div class="home-store-copy">
-        <div class="store-icon">⌂</div>
-        <div>
-          <h2>For Thrift Stores</h2>
-          <p>Help your customers buy more by solving the #1 reason they walk away.</p>
-          <a class="btn" href="partner.html">Partner With Yena</a>
-        </div>
-      </div>
-
+      <button class="slider-btn next" type="button" aria-label="Next slide">›</button>
     </div>
 
+    <div class="slider-dots" id="sliderDots"></div>
   </div>
 </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>Cardboard chairs built for attention.</h2>
+        <p>
+          Box Chairs turn ordinary event seating into a branded experience. Each chair can be
+          designed with sponsor logos, campaign artwork, school spirit, product launches,
+          festival graphics, or venue messaging.
+        </p>
+      </div>
+
+      <div class="cards">
+        <div class="card"><div class="icon">♻</div><h3>Eco-Friendly</h3><p>Made with recycled cardboard for a lighter, smarter alternative to traditional event seating.</p></div>
+        <div class="card"><div class="icon">★</div><h3>Brandable</h3><p>Turn every seat into a sponsor impression, photo opportunity, or interactive brand moment.</p></div>
+        <div class="card"><div class="icon">485</div><h3>Weight Tested</h3><p>Designed and tested to support up to 485 lbs for real-world event use.</p></div>
+        <div class="card"><div class="icon">⚡</div><h3>Fast Campaigns</h3><p>Send the idea, preview the design, approve the artwork, and get chairs shipped to your event.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="dark-band">
+    <div class="container">
+      <div class="section-title">
+        <h2>What we do.</h2>
+        <p>
+          We help businesses, sponsors, venues, and event organizers create custom chairs that build brands,
+          grow businesses, and transform audiences the earth-friendly way.
+        </p>
+      </div>
+
+      <div class="steps">
+        <div class="step"><div class="step-number">01</div><h3>Manufacturing</h3><p>We produce cardboard chairs for events, activations, and custom campaigns.</p></div>
+        <div class="step"><div class="step-number">02</div><h3>Graphic Design</h3><p>We design custom graphics that fit your brand, sponsor, or event theme.</p></div>
+        <div class="step"><div class="step-number">03</div><h3>Printing</h3><p>Your artwork is printed directly onto the chairs for high-visibility marketing.</p></div>
+        <div class="step"><div class="step-number">04</div><h3>Strategy</h3><p>We help plan campaigns that make the chairs part of a larger brand experience.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="container">
+      <div class="section-title">
+        <h2>Custom pricing for custom campaigns.</h2>
+        <p>
+          Every Box Chairs order is priced around your campaign goals, quantity, artwork,
+          production timeline, weather-resistance needs, and delivery location. Submit a
+          request and we’ll build a custom quote for your event, brand, or sponsorship activation.
+        </p>
+      </div>
+
+      <div class="pricing-note">
+        <h3>Built Around Your Campaign</h3>
+        <p>
+          Premium custom seating is never one-size-fits-all. Your quote is tailored to chair quantity,
+          print artwork complexity, weather-resistance requirements, shipping destination, and production deadline.
+          This ensures your team gets the right build, finish, and delivery plan for the exact moment your brand needs to stand out.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Request Custom Pricing</a>
+          <a href="#contact" class="btn btn-outline">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="cta">
+    <div class="container">
+      <h2>Create Your Own Box Chairs</h2>
+      <p>
+        Send us your idea, logo, event details, quantity, and deadline.
+        We’ll help turn it into a custom branded seating campaign.
+      </p>
+      <a href="mailto:Matt@UnitedPaintersWW.com?subject=Box Chairs Quote Request" class="btn">
+        Request a Quote
+      </a>
+    </div>
+  </section>
 
 </main>
 
-<footer class="site-footer home-footer">
-  <div class="container home-footer-grid">
-    <div>
-      <img src="images/logo_primary.png" alt="YENA Custom Studio">
-    </div>
-
-    <div class="footer-tagline">Custom Fit • Custom Style • Custom You</div>
-
-    <div class="footer-contact">
-      <a href="#">Instagram</a>
-      <a href="mailto:hello@yena.studio">Email</a>
-    </div>
+<footer>
+  <div class="container footer-inner">
+    <p>© 2026 Just Sit, LLC. Sit Outside the Box.</p>
+    <p>Eco-friendly cardboard chairs for events, brands, and sponsors.</p>
   </div>
 </footer>
 
+<script>
+  const sliderTrack = document.getElementById("sliderTrack");
+  const slides = document.querySelectorAll(".slide");
+  const prevButton = document.querySelector(".slider-btn.prev");
+  const nextButton = document.querySelector(".slider-btn.next");
+  const sliderDots = document.getElementById("sliderDots");
 
-<div class="yena-lead-overlay" aria-hidden="true">
-  <div class="yena-lead-modal" role="dialog" aria-modal="true" aria-labelledby="yenaLeadTitle">
-    <button class="yena-lead-close" type="button" aria-label="Close popup">×</button>
-    <div class="yena-lead-copy">
-      <h2 id="yenaLeadTitle">Get 10% Off</h2>
-      <h3>Your First Order</h3>
-      <div class="yena-lead-rule"></div>
-      <p>Join our community and be the first to know about new arrivals, exclusive offers, and styling inspiration.</p>
-      <form class="yena-lead-form">
-        <input type="email" name="email" placeholder="Enter your email" required>
-        <button type="submit">Get My 10% Off</button>
-      </form>
-      <div class="yena-lead-success" role="status">Your code YENA10 has been unlocked.</div>
-    </div>
-    <figure class="yena-lead-image">
-      <img src="images/too-long-after.jpg" alt="YENA tailored fashion model">
-    </figure>
-  </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/lead-popup.js"></script>
+  let currentSlide = 0;
+
+  slides.forEach((slide, index) => {
+    const dot = document.createElement("button");
+    dot.classList.add("dot");
+    dot.setAttribute("type", "button");
+    dot.setAttribute("aria-label", "Go to slide " + (index + 1));
+
+    if (index === 0) {
+      dot.classList.add("active");
+    }
+
+    dot.addEventListener("click", () => {
+      currentSlide = index;
+      updateSlider();
+    });
+
+    sliderDots.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll(".dot");
+
+  function updateSlider() {
+    sliderTrack.style.transform = "translateX(-" + currentSlide * 100 + "%)";
+
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentSlide);
+    });
+  }
+
+  function nextSlide() {
+    currentSlide++;
+
+    if (currentSlide >= slides.length) {
+      currentSlide = 0;
+    }
+
+    updateSlider();
+  }
+
+  function prevSlide() {
+    currentSlide--;
+
+    if (currentSlide < 0) {
+      currentSlide = slides.length - 1;
+    }
+
+    updateSlider();
+  }
+
+  nextButton.addEventListener("click", nextSlide);
+  prevButton.addEventListener("click", prevSlide);
+
+  setInterval(nextSlide, 5000);
+</script>
 
 </body>
 </html>
